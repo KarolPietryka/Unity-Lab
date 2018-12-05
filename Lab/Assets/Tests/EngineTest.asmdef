@@ -1,0 +1,15 @@
+{
+    "name": "EngineTest",
+    "references": [
+        "NewAssembly",
+        "EngineEditor"
+    ],
+    "optionalUnityReferences": [
+        "TestAssemblies"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false
+}

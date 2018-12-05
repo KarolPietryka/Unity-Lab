@@ -1,0 +1,10 @@
+{
+    "name": "NewAssembly",
+    "references": [
+        "EngineEditor"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false
+}
