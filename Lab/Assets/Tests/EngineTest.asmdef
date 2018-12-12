@@ -1,8 +1,7 @@
 {
     "name": "EngineTest",
     "references": [
-        "NewAssembly",
-        "EngineEditor"
+        "Engine"
     ],
     "optionalUnityReferences": [
         "TestAssemblies"

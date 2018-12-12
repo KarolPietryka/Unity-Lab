@@ -281,7 +281,7 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 0
+  orthographic: 1
   orthographic size: 5
   m_Depth: -1
   m_CullingMask:
@@ -323,7 +323,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   offset: 10
-  speed: 10
+  XYSpeed: 10
+  scrollSpeed: 1
 --- !u!1 &551914163
 GameObject:
   m_ObjectHideFlags: 0
@@ -334,7 +335,7 @@ GameObject:
   - component: {fileID: 551914164}
   - component: {fileID: 551914165}
   m_Layer: 10
-  m_Name: GameObject
+  m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -470,10 +471,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MazeElement: {fileID: 1447201152}
   GamePlane: {fileID: 1440879865}
-  minMaxXPositionOfGamePlane: {x: 0, y: 0}
-  minMaxYPositionOfGamePlane: {x: 0, y: 0}
-  minMaxXPositionOfMazeElement: {x: 0, y: 0}
-  minMaxYPositionOfMazeElement: {x: 0, y: 0}
 --- !u!4 &740967497
 Transform:
   m_ObjectHideFlags: 0
@@ -659,6 +656,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1440879869}
+  - component: {fileID: 1440879866}
   m_Layer: 10
   m_Name: Plane
   m_TagString: Untagged
@@ -666,6 +664,17 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1440879866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1440879865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dd6e9f54d7012f46868dd5dca31e67f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1440879869
 Transform:
   m_ObjectHideFlags: 0

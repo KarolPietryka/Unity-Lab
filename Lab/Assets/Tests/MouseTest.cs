@@ -5,26 +5,21 @@ using System.Collections;
 
 public class MouseTest {
 
+    float mouseUpperScrollLimit = 200;
 
-    Vector2 minMaxXPositionOfGamePlane = new Vector2(-100, 100);
-    Vector2 minMaxYPositionOfGamePlane = new Vector2(-100, 100);
-   
+    Bounds gamePlaneBounds = new Bounds(new Vector3(0, 0, 0), new Vector3(100, 100, 1));
+    Bounds mazeElementBounds = new Bounds(new Vector3(0, 0, 0), new Vector3(15, 10, 1));
+
 
     [TestCase(0, 0, 0)]
-    [TestCase(29, -82, 0)]
-    [TestCase(95, -95, 0)]
-    [TestCase(-94, -91, 0)]
-    public void _1_InInstantiationArea_ReturnTrue(int mousePositionX, int mousePositionY, int mousePositionZ)
+    [TestCase(29, -32, 0)]
+    [TestCase(42.5f, -45f, 100)]
+    [TestCase(42.5f, 42.5f, 0)]
+    [TestCase(42.5f, 42.5f, 40)]
+    public void _1_InInstantiationArea_ReturnTrue(float mousePositionX, float mousePositionY, float mousePositionZ)
     {
-        Vector2 minMaxXPositionOfMazeElement = new Vector2(-10, 10);// x = {-95, 95} y = {-95, 95} squere dimensionsa
-
-        Vector2 minMaxYPositionOfMazeElement = new Vector2(-10, 10);
-
-        Mouse mouse = new Mouse(minMaxXPositionOfMazeElement,
-            minMaxYPositionOfMazeElement, 
-            minMaxXPositionOfGamePlane, 
-            minMaxYPositionOfGamePlane, 
-            new FakeInputMousePositionProvider(new Vector3(mousePositionX, mousePositionY, mousePositionZ)));
+        IMousePositionProvider mousePositionProvider = new FakeInputMousePositionProvider(new Vector3(mousePositionX, mousePositionY, mousePositionZ));
+        Mouse mouse = new Mouse(mousePositionProvider, gamePlaneBounds, mazeElementBounds, mouseUpperScrollLimit);
 
         bool inInstantiationArea = mouse.InInstantiationArea();
 
@@ -36,21 +31,17 @@ public class MouseTest {
     [TestCase(0, 96, 0)]
     [TestCase(95, -96, 0)]
     [TestCase(-100, 100, 0)]
-    public void _2_InInstantiationArea_ReturnFalse(int mousePositionX, int mousePositionY, int mousePositionZ)
+    [TestCase(-42.6f, -45.001f, 0)]
+    [TestCase(45.5f, 42.5f, 40)]
+    public void _2_InInstantiationArea_ReturnFalse(float mousePositionX, float mousePositionY, float mousePositionZ)
     {
-        Vector2 minMaxXPositionOfMazeElement = new Vector2(-10, 10);// x = {-95, 95} y = {-95, 95} squere dimensionsa
-
-        Vector2 minMaxYPositionOfMazeElement = new Vector2(-10, 10);
-
-        Mouse mouse = new Mouse(minMaxXPositionOfMazeElement,
-            minMaxYPositionOfMazeElement,
-            minMaxXPositionOfGamePlane,
-            minMaxYPositionOfGamePlane,
-            new FakeInputMousePositionProvider(new Vector3(mousePositionX, mousePositionY, mousePositionZ)));
+        IMousePositionProvider mousePositionProvider = new FakeInputMousePositionProvider(new Vector3(mousePositionX, mousePositionY, mousePositionZ));
+        Mouse mouse = new Mouse(mousePositionProvider, gamePlaneBounds, mazeElementBounds, mouseUpperScrollLimit);
 
         bool inInstantiationArea = mouse.InInstantiationArea();
 
         Assert.AreEqual(inInstantiationArea, false);
     }
+    
 }
 
