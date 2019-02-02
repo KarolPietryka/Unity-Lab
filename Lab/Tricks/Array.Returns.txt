@@ -1,0 +1,8 @@
+Dla takich sytuacji jak planeController.MazeArray.Returns(meArray); gdzie MazeArray jest tablic¹ wtedy stosujesz:
+					
+					IMazeElement[,] meArray = new IMazeElement[3, 3];
+					meArray[0, 1] = leftMazeElement;
+					meArray[2, 1] = rightMazeElement;
+					planeController.MazeArray.Returns(meArray);
+					
+					wtedy gdy zapytaj¹ o MazeArray[0, 1] to MazeArray odda meArray[0, 1]

@@ -2,65 +2,88 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IPlane
+public interface IPlaneController
 {
-    Bounds GamePlaneBound { get; set; }
-    Bounds MazeElementBound { get; set; }
-    Vector2 GamePlaneSidesLenght { get; set; }
-    Vector2 MazeElementSidesLenght { get; set; }
-
-    float MazeElementGapBetween { get; set; }
-    Vector2 CountIntagerNumberOfMazeElementOnXAndYAxisInGamePlaneArea();
-    Vector2 CountPositionOfFirstUpLeftMazeElementOnGamePlaneArea(Vector2 _intagerNumberOfMazeElementOnXAndYAxisInGamePlaneArea);
-
-
+    void CreateMazeElementPrefab(Vector3 positionOfMazeElement, int i, int j);
+    Vector2 IntagerNumberOfMazeElementsOnXAndY { get; set; }
+    IMazeElement[,] MazeArray { get; set; }
+    IMazeElement GetFromMazeArray(int x, int y);
+    IMazeElement[] NextPossibleMazeElementsToProcess(Direction buildingDirection, IMazeElement currentMouseOnMazeElement);
 }
-public class Plane : IPlane {
+public class Plane
+{
+    public IPlaneController planeController;
+    public IPlaneElementsBounds planeElementsBounds;
 
-    public Bounds GamePlaneBound { get; set; }
-    public Bounds MazeElementBound { get; set; }
-    public Vector2 GamePlaneSidesLenght { get; set; }
-    public Vector2 MazeElementSidesLenght { get; set; }
-
-    public float MazeElementGapBetween { get; set; }
-
-
-    public Plane() { }
-    public Plane(Bounds _gamePlaneBounds, Bounds _mazeElementBounds, float _mazeElementsGapBetween)
+    public void SetPlaneController(IPlaneController _planeController)
     {
-        GamePlaneBound = _gamePlaneBounds;
-        MazeElementBound = _mazeElementBounds;
-        MazeElementGapBetween = _mazeElementsGapBetween;
+        planeController = _planeController;
+    }
+    public void SetPlaneElementsBounds(IPlaneElementsBounds _planeElementsBounds)
+    {
+        planeElementsBounds = _planeElementsBounds;
+    }
 
-        GamePlaneSidesLenght = new Vector2(2 * GamePlaneBound.extents.x, 2 * GamePlaneBound.extents.y);
-        MazeElementSidesLenght = new Vector2(2 * MazeElementBound.extents.x, 2 * MazeElementBound.extents.y);
+
+    public void CreateGamePlaneGridInScene()
+    {
+        Vector3 positionOfMazeElement;
+        Vector3 positionOfFirstUpLeftMazeElement = CountPositionOfFirstUpLeftMazeElementOnGamePlaneArea(planeElementsBounds.GamePlaneBounds.center.z);
+        Vector2 distanceBetweenTwoMazeElementsCentersOnAxis = CountDistanceBetweenTwoMazeElementsCentersOnAxis();
+
+        planeController.MazeArray = new IMazeElement[(int)planeController.IntagerNumberOfMazeElementsOnXAndY.x, (int)planeController.IntagerNumberOfMazeElementsOnXAndY.y];
+
+        for (int i = 0; i < planeController.IntagerNumberOfMazeElementsOnXAndY.x; i++)
+        {
+            positionOfMazeElement.x = positionOfFirstUpLeftMazeElement.x + i * distanceBetweenTwoMazeElementsCentersOnAxis.x;
+            for (int j = 0; j < planeController.IntagerNumberOfMazeElementsOnXAndY.y; j++)
+            {
+                positionOfMazeElement.y = positionOfFirstUpLeftMazeElement.y - j * distanceBetweenTwoMazeElementsCentersOnAxis.y;
+                positionOfMazeElement.z = planeElementsBounds.GamePlaneBounds.center.z - 1;
+                
+                Debug.Log(positionOfMazeElement.z);
+                planeController.CreateMazeElementPrefab(positionOfMazeElement, i, j);
+            }
+        }
+    }
+
+    public Vector2 CountPositionOfFirstUpLeftMazeElementOnGamePlaneArea(float _gamePlaneBoundsZAxis)
+    {
+        Vector2 mazeElementsAndGapsLenghtSumOnAxis = MazeElementsAndGapsLenghtSumOnAxis();
+        float lastGapAfterMazeElementsRaw = planeElementsBounds.GamePlaneSidesLenght.x - mazeElementsAndGapsLenghtSumOnAxis.x;
+        float firstMazeElementStartPositionX = -planeElementsBounds.GamePlaneBounds.extents.x + (lastGapAfterMazeElementsRaw / 2) + (planeElementsBounds.MazeElementSidesLenght.x / 2);
+
+        float lastGapUnderMazeElementsColumn = planeElementsBounds.GamePlaneSidesLenght.y - mazeElementsAndGapsLenghtSumOnAxis.y;
+        float firstMazeElementStartPositionY = planeElementsBounds.GamePlaneBounds.extents.y - (lastGapUnderMazeElementsColumn / 2) - (planeElementsBounds.MazeElementSidesLenght.y / 2);
+
+        return new Vector3(firstMazeElementStartPositionX, firstMazeElementStartPositionY, _gamePlaneBoundsZAxis);
+    }
+
+    public Vector2 MazeElementsAndGapsLenghtSumOnAxis()
+    {
+        Vector2 mazeElementsAndGapsLenghtSumOnAxis = new Vector2();
+        mazeElementsAndGapsLenghtSumOnAxis.x = planeController.IntagerNumberOfMazeElementsOnXAndY.x * planeElementsBounds.MazeElementSidesLenght.x + (planeController.IntagerNumberOfMazeElementsOnXAndY.x - 1) * planeElementsBounds.MazeElementGapBetween;
+        mazeElementsAndGapsLenghtSumOnAxis.y = planeController.IntagerNumberOfMazeElementsOnXAndY.y * planeElementsBounds.MazeElementSidesLenght.y + (planeController.IntagerNumberOfMazeElementsOnXAndY.y - 1) * planeElementsBounds.MazeElementGapBetween;
+
+        return mazeElementsAndGapsLenghtSumOnAxis;
+    }
+
+    public Vector2 CountDistanceBetweenTwoMazeElementsCentersOnAxis()
+    {
+        Vector2 distanceBetweenTwoMazeElementsCentersOnAxis = new Vector2();
+        distanceBetweenTwoMazeElementsCentersOnAxis.x = 2 * planeElementsBounds.MazeElementBounds.extents.x + planeElementsBounds.MazeElementGapBetween;
+        distanceBetweenTwoMazeElementsCentersOnAxis.y = 2 * planeElementsBounds.MazeElementBounds.extents.y + planeElementsBounds.MazeElementGapBetween;
+
+        return distanceBetweenTwoMazeElementsCentersOnAxis;
     }
 
     public Vector2 CountIntagerNumberOfMazeElementOnXAndYAxisInGamePlaneArea()
     {
-     
-        if (GamePlaneSidesLenght.x <= 0  || GamePlaneSidesLenght.y <= 0|| MazeElementSidesLenght.x <= 0 || MazeElementSidesLenght.y <= 0 || MazeElementGapBetween <= 0)
-        {
-            throw new System.ArgumentOutOfRangeException();
-        }
-
-        int numberOfMazeElementsInXAxis = (int)(GamePlaneSidesLenght.x / (MazeElementSidesLenght.x + MazeElementGapBetween));
-        int numberOfMazeElementsInYAxis = (int)(GamePlaneSidesLenght.y / (MazeElementSidesLenght.y + MazeElementGapBetween));
-
+        //formula : mazeElementSideLenght * N + (N - 1) * mazeElementGap = gamePlaneSideLenght
+        int numberOfMazeElementsInXAxis = (int)((planeElementsBounds.GamePlaneSidesLenght.x + planeElementsBounds.MazeElementGapBetween) / (planeElementsBounds.MazeElementSidesLenght.x + planeElementsBounds.MazeElementGapBetween));
+        int numberOfMazeElementsInYAxis = (int)((planeElementsBounds.GamePlaneSidesLenght.y + planeElementsBounds.MazeElementGapBetween) / (planeElementsBounds.MazeElementSidesLenght.y + planeElementsBounds.MazeElementGapBetween));
         return new Vector2(numberOfMazeElementsInXAxis, numberOfMazeElementsInYAxis);
     }
 
-    public Vector2 CountPositionOfFirstUpLeftMazeElementOnGamePlaneArea(Vector2 _intagerNumberOfMazeElementOnXAndYAxisInGamePlaneArea)
-    {
-        float mazeElementsAndGapsLenghtSumOnX = _intagerNumberOfMazeElementOnXAndYAxisInGamePlaneArea.x * (MazeElementSidesLenght.x + MazeElementGapBetween);
-        float lastGapAfterMazeElementsRaw = GamePlaneSidesLenght.x - mazeElementsAndGapsLenghtSumOnX;      
-        float firstMazeElementStartPositionX = lastGapAfterMazeElementsRaw / 2 + MazeElementSidesLenght.x / 2;
-
-
-        float mazeElementsAndGapsLenghtSumOnY = _intagerNumberOfMazeElementOnXAndYAxisInGamePlaneArea.y * (MazeElementSidesLenght.y + MazeElementGapBetween);
-        float lastGapUnderMazeElementsColumn = GamePlaneSidesLenght.y - mazeElementsAndGapsLenghtSumOnY;
-        float firstMazeElementStartPositionY = lastGapUnderMazeElementsColumn / 2 + MazeElementSidesLenght.y / 2;
-
-        return new Vector2(firstMazeElementStartPositionX, firstMazeElementStartPositionY);
-    }
+    
 }

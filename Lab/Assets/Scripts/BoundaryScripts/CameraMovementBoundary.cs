@@ -2,74 +2,120 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraMovementBoundary : MonoBehaviour{
+
+public class CameraMovementBoundary : MonoBehaviour, ITimeProvider, IElementsBounds, ICameraMovementController {
 
     private CameraMovement cameraMovement;
+    private CameraScroll cameraScroll;
+    [SerializeField]
+    private float offset;
+    [SerializeField]
+    private float xySpeed;
 
-    public float offset;
-    public float XYSpeed;
-    public float scrollSpeed = 1;
+    public IInputProvider InputProvider { get; set; }
+
+    #region cameraMovementControll
+    private Vector2 currentCameraPosition;
+    public float Offset { get { return offset; } set { offset = value; } }
+    public float XYSpeed { get { return xySpeed; } set { xySpeed = value; } }
+    public Bounds MazeElementBounds { get; set; }
+    public Bounds GamePlaneBounds { get; set; }
+    public Vector2 CurrentCameraPosition { get; set; }
+    public float ScreenWidth { get; set; }
+    public float ScreenHeight { get; set; }
+    #endregion
+
+    #region cameraScroll
+    private float scrollSpeed = 1;
+    private Vector2 scrollWheelLimit = new Vector2(5, 200);
+    public float ScrollSpeed { get { return scrollSpeed; } set { scrollSpeed = value; } }
     public Vector2 ScrollWheelLimit
     {
         get { return scrollWheelLimit; }
         set
         {
-            value = scrollWheelLimit;
-            float updateMouseScrollWheelLimit = value.y;
-            GameMasterBoundary.instance.updateMouseScrollWheelLimit(updateMouseScrollWheelLimit);
+            if (value.x < value.y && value.x > 0 && value.y > 0)
+            {
+                scrollWheelLimit = value;
+            }
         }
     }
-
-    private Vector2 scrollWheelLimit = new Vector2(5, 200);
-    private Bounds gamePlaneBounds;
-    private Vector2 currentCameraPosition;
-
-    private float screenWidth;
-    private float screenHeight;
+    public float CameraOrthographicSize {
+        get
+        {
+            return Camera.main.orthographicSize;
+        }
+        set
+        {
+            Camera.main.orthographicSize = value;
+        }
+    }
+#endregion
 
     void Start()
     {
-        screenWidth = Screen.width;
-        screenHeight = Screen.height;
+        ScreenWidth = Screen.width;
+        ScreenHeight = Screen.height;
+        GamePlaneBounds = GameObject.Find("Plane").GetComponent<PlaneBoundry>().GamePlaneBounds;//TODO add tag to Plane  
+
+        CameraOrthographicSize = ScrollWheelLimit.y / 6;
+        InputProvider = GetComponent<InputProviderBoundry>();
 
         cameraMovement = cameraMovementInit();
+        cameraScroll = cameraScrollInit();
     }
 
     CameraMovement cameraMovementInit()
     {
-        IMousePositionProvider mousePositionProvider;
-        ITimeProvider timeProvider;
-        IMouseScrollWheelProvider mouseScrollWheelProvider;
-
-        mousePositionProvider = GameMasterBoundary.instance.mousePositionProvider;
-        timeProvider = GameMasterBoundary.instance.timeProvider;
-        mouseScrollWheelProvider = GameMasterBoundary.instance.mouseScrollWheelProvider;
-
-        return cameraMovement = new CameraMovement(screenWidth, screenHeight, mousePositionProvider, timeProvider, mouseScrollWheelProvider);
+        cameraMovement = new CameraMovement();
+        cameraMovement.SetInputProvider(InputProvider);
+        cameraMovement.SetTimeProvider(this);
+        cameraMovement.SetElementsBounds(this);
+        cameraMovement.SetCameraMovementController(this);
+        return cameraMovement;
     }
 
-    void Update()
+    CameraScroll cameraScrollInit()
     {
-        cameraMove();
-        
+        cameraScroll = new CameraScroll();
+        cameraScroll.SetInputProvider(InputProvider);
+        cameraScroll.SetCameraMovementController(this);
+        return cameraScroll;
+    }
+    
+    void FixedUpdate()
+    {
+        cameraMove();       
     }
 
     void cameraMove()
     {
-        gamePlaneBounds = GameMasterBoundary.instance.GamePlaneBounds;
         currentCameraPosition = Camera.main.transform.position;
 
-        cameraUpdateOnXYZAxis();
+        transform.position = cameraMovement.AxisMovement();
+        transform.GetComponent<Camera>().orthographicSize = cameraScroll.ScrollWheel();
     }
 
-    void cameraUpdateOnXYZAxis()
-    {      
-        transform.position = cameraMovement.AxisMovement(offset, XYSpeed, gamePlaneBounds, currentCameraPosition);
-        transform.GetComponent<Camera>().orthographicSize = cameraMovement.ScrollWheel(scrollSpeed, Camera.main.orthographicSize, scrollWheelLimit);
+    #region ICameraMovementController
+    public float CameraMovementDistance(float speed)
+    {
+        return (speed * GetDeltaTime());
     }
 
- 
+    public bool CanCameraMoveInDirection(Direction moveDirection)
+    {
+        return cameraMovement.CanCameraMoveInDirection(moveDirection);
+    }
+
+    #endregion
+    #region ITimeProvider
+    public float GetDeltaTime()
+    {
+        return Time.deltaTime;
+    }
+    #endregion
 }
+
 
 
 

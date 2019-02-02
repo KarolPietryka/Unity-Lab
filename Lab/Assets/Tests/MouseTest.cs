@@ -2,46 +2,176 @@
 using UnityEngine.TestTools;
 using NUnit.Framework;
 using System.Collections;
+using Moq;
+using NSubstitute;
 
 public class MouseTest {
 
-    float mouseUpperScrollLimit = 200;
-
-    Bounds gamePlaneBounds = new Bounds(new Vector3(0, 0, 0), new Vector3(100, 100, 1));
-    Bounds mazeElementBounds = new Bounds(new Vector3(0, 0, 0), new Vector3(15, 10, 1));
-
-
-    [TestCase(0, 0, 0)]
-    [TestCase(29, -32, 0)]
-    [TestCase(42.5f, -45f, 100)]
-    [TestCase(42.5f, 42.5f, 0)]
-    [TestCase(42.5f, 42.5f, 40)]
-    public void _1_InInstantiationArea_ReturnTrue(float mousePositionX, float mousePositionY, float mousePositionZ)
+    [Test]
+    public void _1_01_WasHorizontalMoveInReferenceToLastClick_BothVectorHaveNegativeXYValues_ReturnTrue()
     {
-        IMousePositionProvider mousePositionProvider = new FakeInputMousePositionProvider(new Vector3(mousePositionX, mousePositionY, mousePositionZ));
-        Mouse mouse = new Mouse(mousePositionProvider, gamePlaneBounds, mazeElementBounds, mouseUpperScrollLimit);
+        Vector3 currentMousePosition = new Vector3(-3, -10, 0);
+        Vector3 lastMouseClickPosition = new Vector3(-1, -100, 0);
 
-        bool inInstantiationArea = mouse.InInstantiationArea();
+        var mouse = new Mouse();
+        mouse.LastMouseClickPosition = lastMouseClickPosition;
 
-        Assert.AreEqual(inInstantiationArea, true);
+        bool wasHorizontalMove = mouse.WasHorizontalMoveInReferenceToLastClick(currentMousePosition);
+
+        Assert.AreEqual(wasHorizontalMove, false);
     }
 
-
-    [TestCase(-96, 0, 0)]
-    [TestCase(0, 96, 0)]
-    [TestCase(95, -96, 0)]
-    [TestCase(-100, 100, 0)]
-    [TestCase(-42.6f, -45.001f, 0)]
-    [TestCase(45.5f, 42.5f, 40)]
-    public void _2_InInstantiationArea_ReturnFalse(float mousePositionX, float mousePositionY, float mousePositionZ)
+    [Test]
+    public void _1_02_WasHorizontalMoveInReferenceToLastClick_BothVectorHaveAlternatingXYValues_ReturnFalse()
     {
-        IMousePositionProvider mousePositionProvider = new FakeInputMousePositionProvider(new Vector3(mousePositionX, mousePositionY, mousePositionZ));
-        Mouse mouse = new Mouse(mousePositionProvider, gamePlaneBounds, mazeElementBounds, mouseUpperScrollLimit);
+        Vector3 currentMousePosition = new Vector3(-3, -10, 0);
+        Vector3 lastMouseClickPosition = new Vector3(-1, 10, 0);
+        var mouse = new Mouse();
+        mouse.LastMouseClickPosition = lastMouseClickPosition;
 
-        bool inInstantiationArea = mouse.InInstantiationArea();
+        bool wasHorizontalMove = mouse.WasHorizontalMoveInReferenceToLastClick(currentMousePosition);
 
-        Assert.AreEqual(inInstantiationArea, false);
+        Assert.AreEqual(wasHorizontalMove, false);
+    }
+
+    [Test]
+    public void _1_03_WasHorizontalMoveInReferenceToLastClick_BothVectorHaveAlternatingXYValues_ReturnFalse()
+    {
+        Vector3 currentMousePosition = new Vector3(-11, -6, 0);
+        Vector3 lastMouseClickPosition = new Vector3(2, 10, 0);
+
+        var mouse = new Mouse();
+        mouse.LastMouseClickPosition = lastMouseClickPosition;
+
+        bool wasHorizontalMove = mouse.WasHorizontalMoveInReferenceToLastClick(currentMousePosition);
+
+        Assert.AreEqual(wasHorizontalMove, false);
     }
     
+    [Test]
+    public void _1_04_WasHorizontalMoveInReferenceToLastClick_VectorHaveAlternatingXYValues_ReturnTrue()
+    {
+        Vector3 currentMousePosition = new Vector3(-0.01f, 0, 0);
+        Vector3 lastMouseClickPosition = new Vector3(0, 0, 0);
+
+        var mouse = new Mouse();
+        mouse.LastMouseClickPosition = lastMouseClickPosition;
+
+        bool wasHorizontalMove = mouse.WasHorizontalMoveInReferenceToLastClick(currentMousePosition);
+
+        Assert.AreEqual(wasHorizontalMove, true);
+    }
+
+    [Test]
+    public void _1_05_WasHorizontalMoveInReferenceToLastClick_VectorHaveAlternatingXYValues_ReturnTrue()
+    {
+        Vector3 currentMousePosition = new Vector3(3, 0, 0);
+        Vector3 lastMouseClickPosition = new Vector3(0, 2, 0);
+
+        var mouse = new Mouse();
+        mouse.LastMouseClickPosition = lastMouseClickPosition;
+
+        bool wasHorizontalMove = mouse.WasHorizontalMoveInReferenceToLastClick(currentMousePosition);
+
+        Assert.AreEqual(wasHorizontalMove, true);
+    }
+
+    [Test]
+    public void _1_06_WasHorizontalMoveInReferenceToLastClick_BothVectorsHavePositiveXYValues_ReturnTrue()
+    {
+        Vector3 currentMousePosition = new Vector3(10, 3, 0);
+        Vector3 lastMouseClickPosition = new Vector3(14, 0, 0);
+
+        var mouse = new Mouse();
+        mouse.LastMouseClickPosition = lastMouseClickPosition;
+        
+        bool wasHorizontalMove = mouse.WasHorizontalMoveInReferenceToLastClick(currentMousePosition);
+
+        Assert.AreEqual(wasHorizontalMove, true);
+    }
+    
+    [Test]
+    public void _1_07_WasHorizontalMoveInReferenceToLastClick_VectorsHaveNegativeXValues_ReturnTrue()
+    {
+        Vector3 currentMousePosition = new Vector3(-10, 5, 0);
+        Vector3 lastMouseClickPosition = new Vector3(-3, 0, 0);
+
+        var mouse = new Mouse();
+        mouse.LastMouseClickPosition = lastMouseClickPosition;
+
+        bool wasHorizontalMove = mouse.WasHorizontalMoveInReferenceToLastClick(currentMousePosition);
+
+        Assert.AreEqual(wasHorizontalMove, true);
+    }
+
+    [Test]
+    public void _1_08_WasHorizontalMoveInReferenceToLastClick_VectorsHaveAlternatingXYValues_ReturnTrue()
+    {
+        Vector3 currentMousePosition = new Vector3(-10, 5, 0);
+        Vector3 lastMouseClickPosition = new Vector3(11, 0, 0);
+
+        var mouse = new Mouse();
+        mouse.LastMouseClickPosition = lastMouseClickPosition;
+
+        bool wasHorizontalMove = mouse.WasHorizontalMoveInReferenceToLastClick(currentMousePosition);
+
+        Assert.AreEqual(wasHorizontalMove, true);
+    }
+
+    [Test]
+    public void _1_09_WasHorizontalMoveInReferenceToLastClick_BothVectorsHavePositiveXYValues_ReturnFalse()
+    {
+        Vector3 currentMousePosition = new Vector3(10, 5, 0);
+        Vector3 lastMouseClickPosition = new Vector3(14, 0, 0);
+
+        var mouse = new Mouse();
+        mouse.LastMouseClickPosition = lastMouseClickPosition;
+
+        bool wasHorizontalMove = mouse.WasHorizontalMoveInReferenceToLastClick(currentMousePosition);
+
+        Assert.AreEqual(wasHorizontalMove, false);
+    }
+
+    [Test]
+    public void _1_10_WasHorizontalMoveInReferenceToLastClick_VectorsHaveNegativeXValues_ReturnFalse()
+    {
+        Vector3 currentMousePosition = new Vector3(-10, -55, 0);
+        Vector3 lastMouseClickPosition = new Vector3(-11, -10, 0);
+
+        var mouse = new Mouse();
+        mouse.LastMouseClickPosition = lastMouseClickPosition;
+
+        bool wasHorizontalMove = mouse.WasHorizontalMoveInReferenceToLastClick(currentMousePosition);
+
+        Assert.AreEqual(wasHorizontalMove, false);
+    }
+
+    [Test]
+    public void _1_11_WasHorizontalMoveInReferenceToLastClick_VectorsHaveNegativeXValues_ReturnFalse()
+    {
+        Vector3 currentMousePosition = new Vector3(-10, -55, 0);
+        Vector3 lastMouseClickPosition = new Vector3(-11, -1000, 0);
+
+        var mouse = new Mouse();
+        mouse.LastMouseClickPosition = lastMouseClickPosition;
+
+        bool wasHorizontalMove = mouse.WasHorizontalMoveInReferenceToLastClick(currentMousePosition);
+
+        Assert.AreEqual(wasHorizontalMove, false);
+    }
+
+    [Test]
+    public void _1_12_WasHorizontalMoveInReferenceToLastClick_VectorsHaveAlternatingXYValues_ReturnTrue()
+    {
+        Vector3 currentMousePosition = new Vector3(-10, 5, 0);
+        Vector3 lastMouseClickPosition = new Vector3(11, -22, 0);
+
+        var mouse = new Mouse();
+        mouse.LastMouseClickPosition = lastMouseClickPosition;
+
+        bool wasHorizontalMove = mouse.WasHorizontalMoveInReferenceToLastClick(currentMousePosition);
+
+        Assert.AreEqual(wasHorizontalMove, false);
+    }
 }
 
