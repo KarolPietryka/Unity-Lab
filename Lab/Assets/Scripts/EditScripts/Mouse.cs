@@ -2,40 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Mouse : IMouse
+public interface IMouseLogic
 {
-    private MazeElementBoundary currentMouseOnMazeElement;
-    public MazeElementBoundary CurrentMouseOnMazeElement
-    {
-        get { return currentMouseOnMazeElement; }
-        set
-        {
-            currentMouseOnMazeElement = value;
-            if (value != null)
-            {
-                CurrentMouseOnMazeElementHadBeenChanged = true;
-            }
-        }
-    }
-    public Vector3 LastMouseClickPosition { get; set; }
+    bool CurrentMouseOnMazeElementHadBeenChanged { get; set; }// DEL ?
+    bool WasHorizontalMoveInReferenceToLastClick(Vector3 mousePosition);
+}
+
+public class Mouse : IMouseLogic
+{
+    private IMouse MouseBoundry;
     public bool CurrentMouseOnMazeElementHadBeenChanged { get; set; }
 
-
-    public Vector2 CurrentMouseOnMazeElementIndex()
+    public Mouse(IMouse mouseBoundry)
     {
-        return CurrentMouseOnMazeElement.Index;
-    }
-
-    public void UpdateLastMouseClickPosition(Vector3 newLastMouseClickPosition)
-    {
-        LastMouseClickPosition = newLastMouseClickPosition;
+        MouseBoundry = mouseBoundry;  
     }
 
     public bool WasHorizontalMoveInReferenceToLastClick(Vector3 mousePosition)
     {
         bool ret;
         Vector3 currentMousePosition = mousePosition;
-        Vector3 lastMouseClickPosition = LastMouseClickPosition;
+        Vector3 lastMouseClickPosition = MouseBoundry.LastMouseClickPosition;
 
         if (Mathf.Abs(currentMousePosition.x - lastMouseClickPosition.x) >= Mathf.Abs(currentMousePosition.y - lastMouseClickPosition.y))
         {

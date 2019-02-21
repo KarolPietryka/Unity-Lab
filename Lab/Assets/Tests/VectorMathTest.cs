@@ -48,4 +48,5 @@ public class VectorMathTest {
         Assert.AreEqual(ifAnyVectorsHaveEqualYWithVector, false);
     }
     #endregion
+
 }

@@ -2,6 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public interface IMazeElement
+{
+    bool IsMazeWall { get; set; }
+    bool IsElementOfAnotherWall { get; set; }
+    Vector2 Index { get; set; }
+    Direction PositionInReferenceToCurrentMazeElement { get; set; }
+    void ReverseIsMazeWall();
+    void ChangeOnHightlightScale();
+    void ChangeOnNormalScale();
+
+    //void ChangeOnMazeWallColor();
+}
+
 public class MazeElementBoundary : MonoBehaviour, IMazeElement
 {
     Color hightlightColor;
@@ -12,6 +25,7 @@ public class MazeElementBoundary : MonoBehaviour, IMazeElement
     public Direction PositionInReferenceToCurrentMazeElement { get; set; }
 
     public bool IsMazeWall { get; set; }
+    public bool IsElementOfAnotherWall { get; set; }
     public Vector2 Index { get; set; }
 
     void Start ()
@@ -20,10 +34,9 @@ public class MazeElementBoundary : MonoBehaviour, IMazeElement
         hightlightColor = new Color32(152, 152, 152, 255);
         whiteColor = new Color(1, 1, 1, 1);
         mazeWallColor = new Color(0, 0, 0, 1);
-
     }
 
-    private void OnMouseOver()
+    private void OnMouseOver()//holding button
     {
         if (Input.GetMouseButton(0))
         {
@@ -32,7 +45,7 @@ public class MazeElementBoundary : MonoBehaviour, IMazeElement
     }
     private void OnMouseEnter()
     {
-        if (IsMazeWall != true && GameMasterBoundary.instance.InBuildingProcesss != true)
+        if (!Input.GetMouseButton(0) && !this.IsElementOfAnotherWall)
         {
             ChangeOnHightlightColor();
             ChangeOnHightlightScale();
@@ -41,7 +54,7 @@ public class MazeElementBoundary : MonoBehaviour, IMazeElement
     }
     private void OnMouseExit()
     {
-        if (IsMazeWall != true && GameMasterBoundary.instance.InBuildingProcesss != true)
+        if (!Input.GetMouseButton(0) && !this.IsElementOfAnotherWall)
         {
             ChangeOnNormalColor();
             ChangeOnNormalScale();
@@ -52,6 +65,15 @@ public class MazeElementBoundary : MonoBehaviour, IMazeElement
     public void ReverseIsMazeWall()
     {
         IsMazeWall = !IsMazeWall;
+        if (IsMazeWall)
+        {
+            ChangeOnMazeWallColor();
+        }
+        else
+        {
+            ChangeOnNormalColor();
+        }
+    
     }
     public void ChangeOnHightlightColor()
     { 

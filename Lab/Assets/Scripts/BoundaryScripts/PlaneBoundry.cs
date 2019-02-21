@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlaneBoundry : MonoBehaviour, IPlaneController, IPlaneElementsBounds
+public class PlaneBoundry : MonoBehaviour, IPlaneBuilder, IPlaneElementsBounds
 {
     private Bounds gamePlaneBound;
     private Bounds mazeElementBound;
-    private Plane gamePlane;
+    private PlaneBuilder gamePlaneBuilder;
     private NextPossibleMazeElementsProvider nextPossibleMazeElementsToProcess;
     [SerializeField]
     private float mazeElementGapBetween;
@@ -51,40 +51,40 @@ public class PlaneBoundry : MonoBehaviour, IPlaneController, IPlaneElementsBound
 
     void Awake ()
     {
-        gamePlane = new Plane();
-        nextPossibleMazeElementsToProcess = new NextPossibleMazeElementsProvider();
+        gamePlaneBuilder = new PlaneBuilder();
 
         MazeElementBounds = MazeElementPrefab.GetComponent<SpriteRenderer>().bounds;
-        //GamePlaneBounds = transform.Find("Sprite").GetComponent<SpriteRenderer>().bounds;
         GamePlaneBounds = new Bounds(transform.Find("Sprite").position, transform.Find("Sprite").GetComponent<SpriteRenderer>().bounds.size);
-        Debug.Log(transform.Find("Sprite").transform.position.z);
           
         MazeElementAndGapSumOn = new Vector2(MazeElementSidesLenght.x + MazeElementGapBetween, MazeElementSidesLenght.y + MazeElementGapBetween);
 
-        gamePlane.SetPlaneController(this);
-        gamePlane.SetPlaneElementsBounds(this);
-        nextPossibleMazeElementsToProcess.SetPlaneController(this);
+        gamePlaneBuilder.SetInterfaces(this, this);
+        //nextPossibleMazeElementsToProcess.SetPlaneController(this);
         CreateGamePlaneGridInScene();
     }
 
     void CreateGamePlaneGridInScene()
     {
-        IntagerNumberOfMazeElementsOnXAndY = gamePlane.CountIntagerNumberOfMazeElementOnXAndYAxisInGamePlaneArea();
-        gamePlane.CreateGamePlaneGridInScene(); 
+        gamePlaneBuilder.CreateGamePlaneGridInScene(); 
     }
 
     public void CreateMazeElementPrefab(Vector3 positionOfMazeElement, int i, int j)
     {
         GameObject clone = Instantiate(MazeElementPrefab, positionOfMazeElement, Quaternion.identity, MazeGroup.transform);
-        Debug.Log(positionOfMazeElement.z);
 
         clone.GetComponent<MazeElementBoundary>().Index = new Vector2(i, j);
         MazeArray[i, j] = clone.GetComponent<MazeElementBoundary>();
     }
-    
+
+    public void InitMazeArray()
+    {
+         MazeArray = new IMazeElement[(int)IntagerNumberOfMazeElementsOnXAndY.x, (int)IntagerNumberOfMazeElementsOnXAndY.y];
+    }
+
     public IMazeElement[] NextPossibleMazeElementsToProcess(Direction buildingDirection, IMazeElement currentMouseOnMazeElement)
     {
-        return nextPossibleMazeElementsToProcess.GetNextPossibleMazeElementsToProcess(buildingDirection, currentMouseOnMazeElement);
+        nextPossibleMazeElementsToProcess = new NextPossibleMazeElementsProvider(currentMouseOnMazeElement.Index, buildingDirection, this);
+        return nextPossibleMazeElementsToProcess.GetNextPossibleMazeElementsToProcess();
     }
 
     public IMazeElement GetFromMazeArray(int x, int y)

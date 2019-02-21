@@ -7,28 +7,28 @@ using NSubstitute;
 
 public class GameMasterTest
 {
-    private IInputProvider getInputProviderMock(Vector3 fakeMousePosition)
+    private IMouse getMouseMock(Vector3 fakeMousePosition)
     {
-        var inputProvider = Substitute.For<IInputProvider>();
-        inputProvider.GetMousePosition().Returns(fakeMousePosition);  
+        var mouse = Substitute.For<IMouse>();
+        mouse.GetMousePosition().Returns(fakeMousePosition);  
 
-        return inputProvider;
+        return mouse;
     }
 
-    private IMouse getMouseMock(Vector3 LastMouseClickPosition)
+    /*private IMouse getMouseMock(Vector3 LastMouseClickPosition)
     {
         var mouse = Substitute.For<IMouse>();
         mouse.LastMouseClickPosition.Returns(LastMouseClickPosition);
 
         return mouse;
     }
-    private GameMaster getGameMasterMock(IInputProvider inputProvider,IMouse mouse)
+    private GameMaster getGameMasterMock(IMouse mouse,IMouse mouse)
     {
         var gameMaster = Substitute.For<GameMaster>();
-        gameMaster.SetInputProvider(inputProvider);
+        gameMaster.SetMouse(mouse);
         gameMaster.SetMouse(mouse);
         return gameMaster;
-    }
+    }*/
 
 
 }

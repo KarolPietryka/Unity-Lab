@@ -12,10 +12,9 @@ public class CameraMovementBoundary : MonoBehaviour, ITimeProvider, IElementsBou
     [SerializeField]
     private float xySpeed;
 
-    public IInputProvider InputProvider { get; set; }
+    public IMouse Mouse { get; set; }
 
     #region cameraMovementControll
-    private Vector2 currentCameraPosition;
     public float Offset { get { return offset; } set { offset = value; } }
     public float XYSpeed { get { return xySpeed; } set { xySpeed = value; } }
     public Bounds MazeElementBounds { get; set; }
@@ -54,31 +53,35 @@ public class CameraMovementBoundary : MonoBehaviour, ITimeProvider, IElementsBou
 
     void Start()
     {
+
+
         ScreenWidth = Screen.width;
         ScreenHeight = Screen.height;
-        GamePlaneBounds = GameObject.Find("Plane").GetComponent<PlaneBoundry>().GamePlaneBounds;//TODO add tag to Plane  
+        GamePlaneBounds = GameObject.Find("Plane").GetComponent<PlaneBoundry>().GamePlaneBounds;
 
         CameraOrthographicSize = ScrollWheelLimit.y / 6;
-        InputProvider = GetComponent<InputProviderBoundry>();
+        Mouse = GetComponent<MouseBoundry>();
 
         cameraMovement = cameraMovementInit();
         cameraScroll = cameraScrollInit();
+
     }
 
     CameraMovement cameraMovementInit()
     {
         cameraMovement = new CameraMovement();
-        cameraMovement.SetInputProvider(InputProvider);
+        cameraMovement.SetMouse(Mouse);
         cameraMovement.SetTimeProvider(this);
         cameraMovement.SetElementsBounds(this);
         cameraMovement.SetCameraMovementController(this);
+        cameraMovement.CreateCameraMovementPermitter();
         return cameraMovement;
     }
 
     CameraScroll cameraScrollInit()
     {
         cameraScroll = new CameraScroll();
-        cameraScroll.SetInputProvider(InputProvider);
+        cameraScroll.SetMouse(Mouse);
         cameraScroll.SetCameraMovementController(this);
         return cameraScroll;
     }
@@ -90,7 +93,7 @@ public class CameraMovementBoundary : MonoBehaviour, ITimeProvider, IElementsBou
 
     void cameraMove()
     {
-        currentCameraPosition = Camera.main.transform.position;
+        CurrentCameraPosition = Camera.main.transform.position;
 
         transform.position = cameraMovement.AxisMovement();
         transform.GetComponent<Camera>().orthographicSize = cameraScroll.ScrollWheel();
@@ -102,12 +105,12 @@ public class CameraMovementBoundary : MonoBehaviour, ITimeProvider, IElementsBou
         return (speed * GetDeltaTime());
     }
 
-    public bool CanCameraMoveInDirection(Direction moveDirection)
+    public bool ShouldCameraMoveInDirection(Direction moveDirection)
     {
-        return cameraMovement.CanCameraMoveInDirection(moveDirection);
+        return cameraMovement.ShouldCameraMoveInDirection(moveDirection);
     }
-
     #endregion
+
     #region ITimeProvider
     public float GetDeltaTime()
     {

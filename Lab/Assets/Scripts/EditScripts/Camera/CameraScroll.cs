@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class CameraScroll{
 
-    private IInputProvider inputProvider;
+    private IMouse mouse;
     private ICameraMovementController cameraMovementController;
 
-    public void SetInputProvider(IInputProvider _inputProvider)
+    public void SetMouse(IMouse _mouse)
     {
-        inputProvider = _inputProvider;
+        mouse = _mouse;
     }
 
     public void SetCameraMovementController(ICameraMovementController _cameraMovementController)
@@ -21,7 +21,7 @@ public class CameraScroll{
     {
         Vector2 scrollWheelLimit = cameraMovementController.ScrollWheelLimit;
         float cameraOrthographicSize = cameraMovementController.CameraOrthographicSize;
-        float mouseScrollWheel = inputProvider.GetMouseScrollWheel();
+        float mouseScrollWheel = mouse.GetMouseScrollWheel();
 
         if (mouseScrollWheel > 0)
         {

@@ -9,17 +9,17 @@ using NSubstitute;
 public class BuildingControllerTest {
 
 
-    private IInputProvider GetInputProviderMock(Vector3 fakeMousePosition)
+    private IMouse GetMouseMock(Vector3 fakeMousePosition)
     {
-        var inputProvider = Substitute.For<IInputProvider>();
-        inputProvider.GetMousePosition().Returns(fakeMousePosition);
+        var mouse = Substitute.For<IMouse>();
+        mouse.GetMousePosition().Returns(fakeMousePosition);
 
-        return inputProvider;
+        return mouse;
     }
-
-    private IInputProvider GetInputProviderMock(Vector3 fakeMousePosition, Direction moveInReferenceToLastClick)
+    /*
+    private IMouse GetInputProviderMock(Vector3 fakeMousePosition, Direction moveInReferenceToLastClick)
     {
-        var inputProvider = Substitute.For<IInputProvider>();
+        var inputProvider = Substitute.For<IMouse>();
         inputProvider.GetMousePosition().Returns(fakeMousePosition);
 
         if (moveInReferenceToLastClick == Direction.Left || moveInReferenceToLastClick == Direction.Right)
@@ -166,6 +166,6 @@ public class BuildingControllerTest {
         Assert.AreEqual(buildingDirection, Direction.Down);
     }
     #endregion
-
+    */
 
 }

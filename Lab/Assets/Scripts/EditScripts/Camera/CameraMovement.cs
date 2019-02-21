@@ -4,17 +4,19 @@ using UnityEngine;
 
 public class CameraMovement
 {
+    private CameraMovementPermitter cameraMovementPermitter;
     private Vector3 cameraMove;
+    private float xySpeed;
 
-    private IInputProvider inputProvider;
+    private IMouse mouse;
     private ITimeProvider timeProvider;
     private IElementsBounds elementsBounds;
     private ICameraMovementController cameraMovementController;
 
 
-    public void SetInputProvider(IInputProvider _inputProvider)
+    public void SetMouse(IMouse _mouse)
     {
-        inputProvider = _inputProvider;
+        mouse = _mouse;
     }
     public void SetTimeProvider(ITimeProvider _timeProvider)
     {
@@ -28,82 +30,51 @@ public class CameraMovement
     {
         cameraMovementController = _cameraMovementController;
     }
+    public void CreateCameraMovementPermitter()
+    {
+        cameraMovementPermitter = new CameraMovementPermitter(mouse, cameraMovementController, elementsBounds);
+    }
 
     public Vector3 AxisMovement()
     {
-        float xySpeed = cameraMovementController.XYSpeed;
-
-        if (cameraMovementController.CanCameraMoveInDirection(Direction.Left))
-        {
-            cameraMove.x += CameraMovementDistance(xySpeed);
-        }
-        else if (cameraMovementController.CanCameraMoveInDirection(Direction.Right))
+        xySpeed = cameraMovementController.XYSpeed;
+        if (cameraMovementController.ShouldCameraMoveInDirection(Direction.Left))
         {
             cameraMove.x -= CameraMovementDistance(xySpeed);
         }
+        else if (cameraMovementController.ShouldCameraMoveInDirection(Direction.Right))
+        {
+            cameraMove.x += CameraMovementDistance(xySpeed);
+        }
 
-        if (cameraMovementController.CanCameraMoveInDirection(Direction.Up))
+        if (cameraMovementController.ShouldCameraMoveInDirection(Direction.Up))
         {
             cameraMove.y += CameraMovementDistance(xySpeed);
         }
-        else if (cameraMovementController.CanCameraMoveInDirection(Direction.Down))
+        else if (cameraMovementController.ShouldCameraMoveInDirection(Direction.Down))
         {
             cameraMove.y -= CameraMovementDistance(xySpeed);
-        }
 
+        }
         return cameraMove;
     }
 
     public float CameraMovementDistance(float speed)
     {
+
         return cameraMovementController.CameraMovementDistance(speed);
     }
 
-    public bool CanCameraMoveInDirection(Direction moveDirection)
+   
+    public bool ShouldCameraMoveInDirection(Direction moveDirection)
     {
         bool ret = false;
-        Vector3 inputMousePositionVec = inputProvider.GetMousePosition();
-        float offset = cameraMovementController.Offset;
-        Vector3 currentCameraPosition = cameraMovementController.CurrentCameraPosition;
-        Bounds gamePlaneBounds = elementsBounds.GamePlaneBounds;
 
-        switch (moveDirection)
+        if (cameraMovementPermitter.IsMouseBehindScreenOffset(moveDirection) && cameraMovementPermitter.IsCameraCenterInsideGamePlaneSquare(moveDirection))
         {
-            case Direction.Left:
-                {
-                    if ((inputMousePositionVec.x < offset) && currentCameraPosition.x > -gamePlaneBounds.extents.x)
-                    {
-                        ret = true;
-                    }
-                    break;
-                }
-            case Direction.Up:
-                {
-                    if ((inputMousePositionVec.y > cameraMovementController.ScreenHeight - offset) && (currentCameraPosition.y < gamePlaneBounds.extents.y))
-                    {
-                        ret = true;
-                    }
-                    break;
-                }
-            case Direction.Right:
-                {
-                    if ((inputMousePositionVec.x > cameraMovementController.ScreenWidth - offset) && (currentCameraPosition.x < gamePlaneBounds.extents.x))
-                    {
-                        ret = true;
-                    }
-                    break;
-                }
-            case Direction.Down:
-                {
-                    if ((inputMousePositionVec.y < offset) && currentCameraPosition.y > -gamePlaneBounds.extents.y)
-                    {
-                        ret = true;
-                    }
-                    break;
-                }
-            default:
-                return false;
+            ret = true;
         }
+                           
         return ret;
     }
 }

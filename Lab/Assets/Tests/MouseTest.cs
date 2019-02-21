@@ -7,14 +7,21 @@ using NSubstitute;
 
 public class MouseTest {
 
+    private IMouse GetMouseBoundryMock(Vector3 lastMouseClickPosition)
+    {
+        var mouseBoundry = Substitute.For<IMouse>();
+        mouseBoundry.LastMouseClickPosition.Returns(lastMouseClickPosition);
+        
+        return mouseBoundry;
+    }
     [Test]
     public void _1_01_WasHorizontalMoveInReferenceToLastClick_BothVectorHaveNegativeXYValues_ReturnTrue()
     {
         Vector3 currentMousePosition = new Vector3(-3, -10, 0);
         Vector3 lastMouseClickPosition = new Vector3(-1, -100, 0);
 
-        var mouse = new Mouse();
-        mouse.LastMouseClickPosition = lastMouseClickPosition;
+        IMouse mouseBoundry = GetMouseBoundryMock(lastMouseClickPosition);
+        var mouse = new Mouse(mouseBoundry);
 
         bool wasHorizontalMove = mouse.WasHorizontalMoveInReferenceToLastClick(currentMousePosition);
 
@@ -26,8 +33,9 @@ public class MouseTest {
     {
         Vector3 currentMousePosition = new Vector3(-3, -10, 0);
         Vector3 lastMouseClickPosition = new Vector3(-1, 10, 0);
-        var mouse = new Mouse();
-        mouse.LastMouseClickPosition = lastMouseClickPosition;
+
+        IMouse mouseBoundry = GetMouseBoundryMock(lastMouseClickPosition);
+        var mouse = new Mouse(mouseBoundry);
 
         bool wasHorizontalMove = mouse.WasHorizontalMoveInReferenceToLastClick(currentMousePosition);
 
@@ -40,8 +48,8 @@ public class MouseTest {
         Vector3 currentMousePosition = new Vector3(-11, -6, 0);
         Vector3 lastMouseClickPosition = new Vector3(2, 10, 0);
 
-        var mouse = new Mouse();
-        mouse.LastMouseClickPosition = lastMouseClickPosition;
+        IMouse mouseBoundry = GetMouseBoundryMock(lastMouseClickPosition);
+        var mouse = new Mouse(mouseBoundry);
 
         bool wasHorizontalMove = mouse.WasHorizontalMoveInReferenceToLastClick(currentMousePosition);
 
@@ -54,8 +62,8 @@ public class MouseTest {
         Vector3 currentMousePosition = new Vector3(-0.01f, 0, 0);
         Vector3 lastMouseClickPosition = new Vector3(0, 0, 0);
 
-        var mouse = new Mouse();
-        mouse.LastMouseClickPosition = lastMouseClickPosition;
+        IMouse mouseBoundry = GetMouseBoundryMock(lastMouseClickPosition);
+        var mouse = new Mouse(mouseBoundry);
 
         bool wasHorizontalMove = mouse.WasHorizontalMoveInReferenceToLastClick(currentMousePosition);
 
@@ -68,8 +76,8 @@ public class MouseTest {
         Vector3 currentMousePosition = new Vector3(3, 0, 0);
         Vector3 lastMouseClickPosition = new Vector3(0, 2, 0);
 
-        var mouse = new Mouse();
-        mouse.LastMouseClickPosition = lastMouseClickPosition;
+        IMouse mouseBoundry = GetMouseBoundryMock(lastMouseClickPosition);
+        var mouse = new Mouse(mouseBoundry);
 
         bool wasHorizontalMove = mouse.WasHorizontalMoveInReferenceToLastClick(currentMousePosition);
 
@@ -82,9 +90,9 @@ public class MouseTest {
         Vector3 currentMousePosition = new Vector3(10, 3, 0);
         Vector3 lastMouseClickPosition = new Vector3(14, 0, 0);
 
-        var mouse = new Mouse();
-        mouse.LastMouseClickPosition = lastMouseClickPosition;
-        
+        IMouse mouseBoundry = GetMouseBoundryMock(lastMouseClickPosition);
+        var mouse = new Mouse(mouseBoundry);
+
         bool wasHorizontalMove = mouse.WasHorizontalMoveInReferenceToLastClick(currentMousePosition);
 
         Assert.AreEqual(wasHorizontalMove, true);
@@ -96,8 +104,8 @@ public class MouseTest {
         Vector3 currentMousePosition = new Vector3(-10, 5, 0);
         Vector3 lastMouseClickPosition = new Vector3(-3, 0, 0);
 
-        var mouse = new Mouse();
-        mouse.LastMouseClickPosition = lastMouseClickPosition;
+        IMouse mouseBoundry = GetMouseBoundryMock(lastMouseClickPosition);
+        var mouse = new Mouse(mouseBoundry);
 
         bool wasHorizontalMove = mouse.WasHorizontalMoveInReferenceToLastClick(currentMousePosition);
 
@@ -110,8 +118,8 @@ public class MouseTest {
         Vector3 currentMousePosition = new Vector3(-10, 5, 0);
         Vector3 lastMouseClickPosition = new Vector3(11, 0, 0);
 
-        var mouse = new Mouse();
-        mouse.LastMouseClickPosition = lastMouseClickPosition;
+        IMouse mouseBoundry = GetMouseBoundryMock(lastMouseClickPosition);
+        var mouse = new Mouse(mouseBoundry);
 
         bool wasHorizontalMove = mouse.WasHorizontalMoveInReferenceToLastClick(currentMousePosition);
 
@@ -124,8 +132,8 @@ public class MouseTest {
         Vector3 currentMousePosition = new Vector3(10, 5, 0);
         Vector3 lastMouseClickPosition = new Vector3(14, 0, 0);
 
-        var mouse = new Mouse();
-        mouse.LastMouseClickPosition = lastMouseClickPosition;
+        IMouse mouseBoundry = GetMouseBoundryMock(lastMouseClickPosition);
+        var mouse = new Mouse(mouseBoundry);
 
         bool wasHorizontalMove = mouse.WasHorizontalMoveInReferenceToLastClick(currentMousePosition);
 
@@ -138,8 +146,8 @@ public class MouseTest {
         Vector3 currentMousePosition = new Vector3(-10, -55, 0);
         Vector3 lastMouseClickPosition = new Vector3(-11, -10, 0);
 
-        var mouse = new Mouse();
-        mouse.LastMouseClickPosition = lastMouseClickPosition;
+        IMouse mouseBoundry = GetMouseBoundryMock(lastMouseClickPosition);
+        var mouse = new Mouse(mouseBoundry);
 
         bool wasHorizontalMove = mouse.WasHorizontalMoveInReferenceToLastClick(currentMousePosition);
 
@@ -152,8 +160,8 @@ public class MouseTest {
         Vector3 currentMousePosition = new Vector3(-10, -55, 0);
         Vector3 lastMouseClickPosition = new Vector3(-11, -1000, 0);
 
-        var mouse = new Mouse();
-        mouse.LastMouseClickPosition = lastMouseClickPosition;
+        IMouse mouseBoundry = GetMouseBoundryMock(lastMouseClickPosition);
+        var mouse = new Mouse(mouseBoundry);
 
         bool wasHorizontalMove = mouse.WasHorizontalMoveInReferenceToLastClick(currentMousePosition);
 
@@ -166,8 +174,8 @@ public class MouseTest {
         Vector3 currentMousePosition = new Vector3(-10, 5, 0);
         Vector3 lastMouseClickPosition = new Vector3(11, -22, 0);
 
-        var mouse = new Mouse();
-        mouse.LastMouseClickPosition = lastMouseClickPosition;
+        IMouse mouseBoundry = GetMouseBoundryMock(lastMouseClickPosition);
+        var mouse = new Mouse(mouseBoundry);
 
         bool wasHorizontalMove = mouse.WasHorizontalMoveInReferenceToLastClick(currentMousePosition);
 
