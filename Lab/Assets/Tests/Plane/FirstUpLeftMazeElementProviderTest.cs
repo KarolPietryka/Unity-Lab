@@ -18,10 +18,10 @@ public class FirstUpLeftMazeElementProviderTest: AbstractionPlaneTestRoot
         float mazeElementsGapBetween = 1;
 
         var planeElementsBounds = getPlaneElementsBoundsMock(gamePlaneBounds, mazeElementBounds, mazeElementsGapBetween);
-        var planeController = getPlaneControllerMock(intagerNumberOfMazeElementsOnXAndY);
-        var firstUpLeftMazeElementProvider = Substitute.For<FirstUpLeftMazeElementPositionProvider>();
-        firstUpLeftMazeElementProvider.SetPlaneElementsBounds(planeElementsBounds);
-        firstUpLeftMazeElementProvider.SetPlaneController(planeController);
+        var planeController = getPlaneBuilderrMock(intagerNumberOfMazeElementsOnXAndY);
+        var firstUpLeftMazeElementProvider = Substitute.For<FirstUpLeftMazeElementPositionProvider>(planeController, planeElementsBounds);
+        //firstUpLeftMazeElementProvider.SetPlaneElementsBounds(planeElementsBounds);
+        //firstUpLeftMazeElementProvider.SetPlaneController(planeController);
 
 
         Vector2 positionOfFirstUpLeftMazeElementOnGamePlaneArea = firstUpLeftMazeElementProvider.PositionOfFirstUpLeftMazeElementOnGamePlaneArea();
@@ -37,10 +37,10 @@ public class FirstUpLeftMazeElementProviderTest: AbstractionPlaneTestRoot
         float mazeElementsGapBetween = 1;
 
         var planeElementsBounds = getPlaneElementsBoundsMock(gamePlaneBounds, mazeElementBounds, mazeElementsGapBetween);
-        var planeController = getPlaneControllerMock(intagerNumberOfMazeElementsOnXAndY);
-        var firstUpLeftMazeElementProvider = Substitute.For<FirstUpLeftMazeElementPositionProvider>();
-        firstUpLeftMazeElementProvider.SetPlaneElementsBounds(planeElementsBounds);
-        firstUpLeftMazeElementProvider.SetPlaneController(planeController);
+        var planeController = getPlaneBuilderrMock(intagerNumberOfMazeElementsOnXAndY);
+        var firstUpLeftMazeElementProvider = Substitute.For<FirstUpLeftMazeElementPositionProvider>(planeController, planeElementsBounds);
+        //firstUpLeftMazeElementProvider.SetPlaneElementsBounds(planeElementsBounds);
+        //firstUpLeftMazeElementProvider.SetPlaneController(planeController);
 
         Vector2 positionOfFirstUpLeftMazeElementOnGamePlaneArea = firstUpLeftMazeElementProvider.PositionOfFirstUpLeftMazeElementOnGamePlaneArea();
         Assert.AreEqual(positionOfFirstUpLeftMazeElementOnGamePlaneArea.x, -44.0f);
@@ -55,10 +55,10 @@ public class FirstUpLeftMazeElementProviderTest: AbstractionPlaneTestRoot
         float mazeElementsGapBetween = 3;
 
         var planeElementsBounds = getPlaneElementsBoundsMock(gamePlaneBounds, mazeElementBounds, mazeElementsGapBetween);
-        var planeController = getPlaneControllerMock(intagerNumberOfMazeElementsOnXAndY);
-        var firstUpLeftMazeElementProvider = Substitute.For<FirstUpLeftMazeElementPositionProvider>();
-        firstUpLeftMazeElementProvider.SetPlaneElementsBounds(planeElementsBounds);
-        firstUpLeftMazeElementProvider.SetPlaneController(planeController);
+        var planeController = getPlaneBuilderrMock(intagerNumberOfMazeElementsOnXAndY);
+        var firstUpLeftMazeElementProvider = Substitute.For<FirstUpLeftMazeElementPositionProvider>(planeController, planeElementsBounds);
+        //firstUpLeftMazeElementProvider.SetPlaneElementsBounds(planeElementsBounds);
+        //firstUpLeftMazeElementProvider.SetPlaneController(planeController);
 
         Vector2 positionOfFirstUpLeftMazeElementOnGamePlaneArea = firstUpLeftMazeElementProvider.PositionOfFirstUpLeftMazeElementOnGamePlaneArea();
         Assert.AreEqual(positionOfFirstUpLeftMazeElementOnGamePlaneArea.x, -4f);
@@ -73,10 +73,10 @@ public class FirstUpLeftMazeElementProviderTest: AbstractionPlaneTestRoot
         float mazeElementsGapBetween = 1;
 
         var planeElementsBounds = getPlaneElementsBoundsMock(gamePlaneBounds, mazeElementBounds, mazeElementsGapBetween);
-        var planeController = getPlaneControllerMock(intagerNumberOfMazeElementsOnXAndY);
-        var firstUpLeftMazeElementProvider = Substitute.For<FirstUpLeftMazeElementPositionProvider>();
-        firstUpLeftMazeElementProvider.SetPlaneElementsBounds(planeElementsBounds);
-        firstUpLeftMazeElementProvider.SetPlaneController(planeController);
+        var planeController = getPlaneBuilderrMock(intagerNumberOfMazeElementsOnXAndY);
+        var firstUpLeftMazeElementProvider = Substitute.For<FirstUpLeftMazeElementPositionProvider>(planeController, planeElementsBounds);
+        //firstUpLeftMazeElementProvider.SetPlaneElementsBounds(planeElementsBounds);
+        //firstUpLeftMazeElementProvider.SetPlaneController(planeController);
 
         Vector2 positionOfFirstUpLeftMazeElementOnGamePlaneArea = firstUpLeftMazeElementProvider.PositionOfFirstUpLeftMazeElementOnGamePlaneArea();
         Assert.AreEqual(positionOfFirstUpLeftMazeElementOnGamePlaneArea.y, 4.0f);
@@ -91,10 +91,10 @@ public class FirstUpLeftMazeElementProviderTest: AbstractionPlaneTestRoot
         float mazeElementsGapBetween = 1;
 
         var planeElementsBounds = getPlaneElementsBoundsMock(gamePlaneBounds, mazeElementBounds, mazeElementsGapBetween);
-        var planeController = getPlaneControllerMock(intagerNumberOfMazeElementsOnXAndY);
-        var firstUpLeftMazeElementProvider = Substitute.For<FirstUpLeftMazeElementPositionProvider>();
-        firstUpLeftMazeElementProvider.SetPlaneElementsBounds(planeElementsBounds);
-        firstUpLeftMazeElementProvider.SetPlaneController(planeController);
+        var planeController = getPlaneBuilderrMock(intagerNumberOfMazeElementsOnXAndY);
+        var firstUpLeftMazeElementProvider = Substitute.For<FirstUpLeftMazeElementPositionProvider>(planeController, planeElementsBounds);
+       // firstUpLeftMazeElementProvider.SetPlaneElementsBounds(planeElementsBounds);
+       // firstUpLeftMazeElementProvider.SetPlaneController(planeController);
 
         Vector2 positionOfFirstUpLeftMazeElementOnGamePlaneArea = firstUpLeftMazeElementProvider.PositionOfFirstUpLeftMazeElementOnGamePlaneArea();
         Assert.AreEqual(positionOfFirstUpLeftMazeElementOnGamePlaneArea.y, 40.0f);
@@ -109,10 +109,10 @@ public class FirstUpLeftMazeElementProviderTest: AbstractionPlaneTestRoot
         float mazeElementsGapBetween = 3;
 
         var planeElementsBounds = getPlaneElementsBoundsMock(gamePlaneBounds, mazeElementBounds, mazeElementsGapBetween);
-        var planeController = getPlaneControllerMock(intagerNumberOfMazeElementsOnXAndY);
-        var firstUpLeftMazeElementProvider = Substitute.For<FirstUpLeftMazeElementPositionProvider>();
-        firstUpLeftMazeElementProvider.SetPlaneElementsBounds(planeElementsBounds);
-        firstUpLeftMazeElementProvider.SetPlaneController(planeController);
+        var planeController = getPlaneBuilderrMock(intagerNumberOfMazeElementsOnXAndY);
+        var firstUpLeftMazeElementProvider = Substitute.For<FirstUpLeftMazeElementPositionProvider>(planeController, planeElementsBounds);
+       // firstUpLeftMazeElementProvider.SetPlaneElementsBounds(planeElementsBounds);
+        //firstUpLeftMazeElementProvider.SetPlaneController(planeController);
 
         Vector2 positionOfFirstUpLeftMazeElementOnGamePlaneArea = firstUpLeftMazeElementProvider.PositionOfFirstUpLeftMazeElementOnGamePlaneArea();
         Assert.AreEqual(positionOfFirstUpLeftMazeElementOnGamePlaneArea.y, 0f);
@@ -128,10 +128,10 @@ public class FirstUpLeftMazeElementProviderTest: AbstractionPlaneTestRoot
         float mazeElementsGapBetween = 2;
 
         var planeElementsBounds = getPlaneElementsBoundsMock(mazeElementBounds, mazeElementsGapBetween);
-        var planeController = getPlaneControllerMock(intagerNumberOfMazeElementsOnXAndY);
-        var firstUpLeftMazeElementProvider = Substitute.For<FirstUpLeftMazeElementPositionProvider>();
-        firstUpLeftMazeElementProvider.SetPlaneElementsBounds(planeElementsBounds);
-        firstUpLeftMazeElementProvider.SetPlaneController(planeController);
+        var planeController = getPlaneBuilderrMock(intagerNumberOfMazeElementsOnXAndY);
+        var firstUpLeftMazeElementProvider = Substitute.For<FirstUpLeftMazeElementPositionProvider>(planeController, planeElementsBounds);
+        //firstUpLeftMazeElementProvider.SetPlaneElementsBounds(planeElementsBounds);
+        //firstUpLeftMazeElementProvider.SetPlaneController(planeController);
 
         Vector2 mazeElementsAndGapsLenghtSumOnAxis = firstUpLeftMazeElementProvider.MazeElementsAndGapsLenghtSumOnAxis();
         Assert.AreEqual(mazeElementsAndGapsLenghtSumOnAxis.x, 10f);
@@ -146,10 +146,10 @@ public class FirstUpLeftMazeElementProviderTest: AbstractionPlaneTestRoot
         float mazeElementsGapBetween = 0;
 
         var planeElementsBounds = getPlaneElementsBoundsMock(mazeElementBounds, mazeElementsGapBetween);
-        var planeController = getPlaneControllerMock(intagerNumberOfMazeElementsOnXAndY);
-        var firstUpLeftMazeElementProvider = Substitute.For<FirstUpLeftMazeElementPositionProvider>();
-        firstUpLeftMazeElementProvider.SetPlaneElementsBounds(planeElementsBounds);
-        firstUpLeftMazeElementProvider.SetPlaneController(planeController);
+        var planeController = getPlaneBuilderrMock(intagerNumberOfMazeElementsOnXAndY);
+        var firstUpLeftMazeElementProvider = Substitute.For<FirstUpLeftMazeElementPositionProvider>(planeController, planeElementsBounds);
+        //firstUpLeftMazeElementProvider.SetPlaneElementsBounds(planeElementsBounds);
+       // firstUpLeftMazeElementProvider.SetPlaneController(planeController);
 
         Vector2 mazeElementsAndGapsLenghtSumOnAxis = firstUpLeftMazeElementProvider.MazeElementsAndGapsLenghtSumOnAxis();
         Assert.AreEqual(mazeElementsAndGapsLenghtSumOnAxis.x, 4f);

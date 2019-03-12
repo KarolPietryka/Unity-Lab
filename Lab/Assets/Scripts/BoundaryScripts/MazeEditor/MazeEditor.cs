@@ -28,11 +28,6 @@ public class MazeEditor : IMazeEditor{
         else if (inputButtons.GetMouseButton(0) && Mouse.CurrentMouseOnMazeElement != null)
         {
             mazeElementProcessing.MazeElementInLineProcessing();
-            // if (currentMouseOnMazeElement.Equals(NextPossibleMazeElementsToProcess[0]) || currentMouseOnMazeElement.Equals(NextPossibleMazeElementsToProcess[1]))//current have hanged and now it is one of nextMazeElements
-            // {
-            // gameMaster.ProcessNextMazeElement();
-            //  }
-            //NextPossibleMazeElementsToProcess = GamePlane.GetComponent<PlaneBoundry>().NextPossibleMazeElementsToProcess(buildingDirection, Mouse.CurrentMouseOnMazeElement);
         }
         else if (inputButtons.GetMouseButtonUp(0))
         {

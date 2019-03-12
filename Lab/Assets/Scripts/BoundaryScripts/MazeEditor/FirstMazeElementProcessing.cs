@@ -2,20 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IMousePosition
-{
-    //Vector2 MousePosition { set; }
-}
-public interface IFirstMazeElementProcessing : IMousePosition
+
+public interface IFirstMazeElementProcessing
 {
     void Execute();
-    bool GetNewIsMazeWallForRoot();
+    bool GetIsMazeWallForRootAfterCurrentProcess();
 }
 public class FirstMazeElementProcessing : IFirstMazeElementProcessing{
 
     private IMouse MouseBoundry;
-   // private Vector2 mousePosition;
-    //public Vector2 MousePosition { set { mousePosition = value; } }
 
     public FirstMazeElementProcessing(IMouse mouseBoundry)
     {
@@ -26,14 +21,13 @@ public class FirstMazeElementProcessing : IFirstMazeElementProcessing{
     {
         MouseBoundry.LastMouseClickPosition = MouseBoundry.GetMousePosition();
         MouseBoundry.LastMouseClickMazeElement = MouseBoundry.CurrentMouseOnMazeElement;
-       // MouseBoundry.CurrentMouseOnMazeElement.ReverseIsMazeWall();
         MouseBoundry.CurrentMouseOnMazeElement.ChangeOnNormalScale();
         MouseBoundry.CurrentMouseOnMazeElement.ChangeOnMazeWallColor();
     }
 
-    public bool GetNewIsMazeWallForRoot()
+    public bool GetIsMazeWallForRootAfterCurrentProcess()
     {
-        return !MouseBoundry.GetCurrentMouseOnMazeElementIsMazeElement();
+        return ! MouseBoundry.GetCurrentMouseOnMazeElementIsMazeElement();
     }
 
 }

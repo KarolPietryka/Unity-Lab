@@ -10,26 +10,26 @@ public interface IMazeElementsInLineProcessing
 }
 public class MazeElementsInLineProcessing : IMazeElementsInLineProcessing{
 
-    IMouse mouse;
     float mazeElementsInLineUpdateOffset = 0.5f;
-    IFarthestMazeElement farthestMazeEleFromLastMouseClickMazeEle;
-    IProcessDirectionUpdate processDirectionUpdate;
-
-    IMazeElementsList mazeElementsListToProcess;
-
     bool newIsMazeWallForRootMazeElement;
 
-    public void setNewIsMazeWallForRoot(bool newIsMazeWall)
-    {
-        newIsMazeWallForRootMazeElement = newIsMazeWall;
-    }
+    IMouse mouse;
+    IFarthestMazeElement farthestMazeEleFromLastMouseClickMazeEle;
+    IMazeElementsListToProcess mazeElementsListToProcess;
 
-    public MazeElementsInLineProcessing(IProcessDirectionUpdate _processDirectionUpdate, IFarthestMazeElement _farthestMazeEleFromLastMouseClickMazeEle, IMouse _mouse, IMazeElementsList _mazeElementsListToProcess)
+    IProcessDirectionUpdate processDirectionUpdate;
+
+    public MazeElementsInLineProcessing(IProcessDirectionUpdate _processDirectionUpdate, IFarthestMazeElement _farthestMazeEleFromLastMouseClickMazeEle, IMouse _mouse, IMazeElementsListToProcess _mazeElementsListToProcess)
     {
         mouse = _mouse;
         processDirectionUpdate = _processDirectionUpdate;
         farthestMazeEleFromLastMouseClickMazeEle = _farthestMazeEleFromLastMouseClickMazeEle;
         mazeElementsListToProcess = _mazeElementsListToProcess;
+    }
+
+    public void setNewIsMazeWallForRoot(bool newIsMazeWall)
+    {
+        newIsMazeWallForRootMazeElement = newIsMazeWall;
     }
 
     public void Execute()
@@ -43,24 +43,21 @@ public class MazeElementsInLineProcessing : IMazeElementsInLineProcessing{
             if (processDirectionUpdate.WasProcessDirectionChange())
             {
                 mazeElementsListToProcess.ReverseFromToInList(mouse.GetLastMouseClickMazeElementIndex(), farthestMazeEleFromLastMouseClickMazeEle.CurrentFarthestMazeElementIndex, processDirectionUpdate.GetLastCheckDirection());
-                mazeElementsListToProcess.MazeElementsToProcess.Clear();
-            }
- 
-            farthestMazeEleFromLastMouseClickMazeEle.UpdateIfCurrentMazeEleIsGreater(processDirection);
-            if (DidCurrentMazeEleRewound(processDirection))
-            {
-                mazeElementsListToProcess.ReverseFromToInList(mouse.GetCurrentMouseOnMazeElementIndex(), farthestMazeEleFromLastMouseClickMazeEle.CurrentFarthestMazeElementIndex, processDirection);
-                farthestMazeEleFromLastMouseClickMazeEle.CurrentFarthestMazeElementIndex = mouse.GetCurrentMouseOnMazeElementIndex();
             }
 
-            mazeElementsListToProcess.UpdateMazeElementsToProcessList(processDirection, newIsMazeWallForRootMazeElement);
-            mazeElementsListToProcess.ChangeMazeElementsInListFromTo(mouse, processDirection, newIsMazeWallForRootMazeElement);
-            
-            //mazeElementsListProcessing.ProcessFromLastMouseClickMazeElementToCurrentMazeElement(farthestMazeEleFromLastMouseClickMazeEle);
+            farthestMazeEleFromLastMouseClickMazeEle.UpdateIfCurrentMazeEleIsGreater(processDirection);
+
+            if (DidCurrentMazeEleRewound(processDirection))
+            {
+                RewoundProcess(processDirection);
+            }
+
+            ProgressProcess(processDirection);
         }
     }
 
-    public bool DidCurrentMazeEleRewound(Direction processDirection)
+
+    private bool DidCurrentMazeEleRewound(Direction processDirection)
     {
         return ! ProjectionOfVectors.isProjectionOfCurrentMazeEleEqualToFarthestMazeEle(farthestMazeEleFromLastMouseClickMazeEle, mouse, processDirection);
     }
@@ -70,4 +67,15 @@ public class MazeElementsInLineProcessing : IMazeElementsInLineProcessing{
         mazeElementsListToProcess.MazeElementsListFinalProcess(newIsMazeWallForRootMazeElement);
     }
 
+    private void RewoundProcess(Direction processDirection)
+    {
+        mazeElementsListToProcess.ReverseFromToInList(mouse.GetCurrentMouseOnMazeElementIndex(), farthestMazeEleFromLastMouseClickMazeEle.CurrentFarthestMazeElementIndex, processDirection);
+        farthestMazeEleFromLastMouseClickMazeEle.CurrentFarthestMazeElementIndex = mouse.GetCurrentMouseOnMazeElementIndex();
+    }
+
+    private void ProgressProcess(Direction processDirection)
+    {
+        mazeElementsListToProcess.UpdateMazeElementsToProcessList(processDirection, newIsMazeWallForRootMazeElement);
+        mazeElementsListToProcess.ChangeMazeElementsInListFromTo(mouse, processDirection, newIsMazeWallForRootMazeElement);
+    }
 }

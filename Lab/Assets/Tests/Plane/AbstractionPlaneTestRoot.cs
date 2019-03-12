@@ -5,7 +5,7 @@ using NSubstitute;
 
 public abstract class AbstractionPlaneTestRoot{
 
-    public IPlaneBuilder getPlaneControllerMock(Vector2 intagerNumberOfMazeElementsOnXAndY)
+    public IPlaneBuilder getPlaneBuilderrMock(Vector2 intagerNumberOfMazeElementsOnXAndY)
     {
         var planeController = Substitute.For<IPlaneBuilder>();
         planeController.IntagerNumberOfMazeElementsOnXAndY.Returns(intagerNumberOfMazeElementsOnXAndY);

@@ -2,19 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FirstUpLeftMazeElementPositionProvider{
+public interface IFirstUpLeftMazeElementPositionProvider
+{
+    Vector2 PositionOfFirstUpLeftMazeElementOnGamePlaneArea();
+    Vector2 MazeElementsAndGapsLenghtSumOnAxis();
+}
+public class FirstUpLeftMazeElementPositionProvider : IFirstUpLeftMazeElementPositionProvider
+{
 
     public IPlaneBuilder planeController;
     public IPlaneElementsBounds planeElementsBounds;
 
-    public void SetPlaneController(IPlaneBuilder _planeController)
+    public FirstUpLeftMazeElementPositionProvider(IPlaneBuilder _planeController, IPlaneElementsBounds _planeElementsBounds)
+    {
+        planeController = _planeController;
+        planeElementsBounds = _planeElementsBounds;
+    }
+
+    /*public void SetPlaneController(IPlaneBuilder _planeController)
     {
         planeController = _planeController;
     }
     public void SetPlaneElementsBounds(IPlaneElementsBounds _planeElementsBounds)
     {
         planeElementsBounds = _planeElementsBounds;
-    }
+    }*/
 
     public Vector2 PositionOfFirstUpLeftMazeElementOnGamePlaneArea()
     {

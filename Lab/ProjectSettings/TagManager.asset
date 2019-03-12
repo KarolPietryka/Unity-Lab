@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - MazeElement
+  - PathFindStartNode
+  - PathFindDestinationNode
+  - PathFindSolution
   layers:
   - Default
   - TransparentFX

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public abstract class PlaneBuilderInitiator{
 
-    protected FirstUpLeftMazeElementPositionProvider firstUpLeftMazeElementProvider;
-    protected NumberOfMazeElementsInGamePlaneArea numberOfMazeElementsInGamePlaneArea;
+    protected IFirstUpLeftMazeElementPositionProvider firstUpLeftMazeElementPositionProvider;
+    protected INumberOfMazeElementsInGamePlaneArea numberOfMazeElementsInGamePlaneArea;
     private IPlaneBuilder planeBuilder;
     private IPlaneElementsBounds planeElementsBounds;
 
@@ -29,14 +29,14 @@ public abstract class PlaneBuilderInitiator{
         PlaneElementsBounds = _planeElementsBounds;
     }
 
-    public void InitFirstUpLeftMazeElementProvider()
+    /*public void InitFirstUpLeftMazeElementProvider()
     {
         firstUpLeftMazeElementProvider.SetPlaneController(PlaneBuilder);
         firstUpLeftMazeElementProvider.SetPlaneElementsBounds(PlaneElementsBounds);
-    }
+    }*/
 
-    public void InitNumberOfMazeElementsInGamePlaneArea()
+    /*public void InitNumberOfMazeElementsInGamePlaneArea()
     {
         numberOfMazeElementsInGamePlaneArea.SetPlaneElementsBounds(PlaneElementsBounds);
-    }
+    }*/
 }

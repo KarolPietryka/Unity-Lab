@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NextPossibleRegularMazeElements: INextPossibleRegularMazeElements {
-
-    Vector2 currentMouseOnMazeElementIndex;
+public class NextPossibleRegularMazeElements// : INextPossibleRegularMazeElements {
+{ 
+   /* Vector2 currentMouseOnMazeElementIndex;
     Direction buildingDirection;
     IPlaneBuilder planeBuilder;
 
@@ -38,7 +38,7 @@ public class NextPossibleRegularMazeElements: INextPossibleRegularMazeElements {
         }
 
         return NextPossibleMazeElementsToProcess;
-    }
+    }*/
 }
 
 public interface INextPossibleRegularMazeElements

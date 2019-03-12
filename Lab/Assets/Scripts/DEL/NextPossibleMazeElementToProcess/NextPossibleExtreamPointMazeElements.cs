@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NextPossibleExtreamPointMazeElements : INextPossibleExtreamPointMazeElements {
-
-    Vector2 currentMouseOnMazeElementIndex;
+public class NextPossibleExtreamPointMazeElements// : INextPossibleExtreamPointMazeElements {
+{ 
+   /* Vector2 currentMouseOnMazeElementIndex;
     Direction buildingDirection;
     IPlaneBuilder planeBuilder;
 
@@ -50,7 +50,7 @@ public class NextPossibleExtreamPointMazeElements : INextPossibleExtreamPointMaz
         if (NextPossibleMazeElementsToProcess[0] == null || NextPossibleMazeElementsToProcess[1] == null)
         { throw new System.InvalidOperationException(); }
         return NextPossibleMazeElementsToProcess;
-    }
+    }*/
 }
 
 public interface INextPossibleExtreamPointMazeElements

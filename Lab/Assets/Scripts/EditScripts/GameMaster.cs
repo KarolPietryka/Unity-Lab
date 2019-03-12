@@ -34,13 +34,13 @@ public class GameMaster
     public void FirstMazeWallConstruct()
     {
         //buildingController.InBuildingProcesss = true;
-        buildingController.NextPossibleMazeElementsToProcess = planeBuilder.NextPossibleMazeElementsToProcess(buildingController.BuildingDirection, mouse.CurrentMouseOnMazeElement);
-        buildingController.SetBuldingStatus(mouse.CurrentMouseOnMazeElement.IsMazeWall);
+        //buildingController.NextPossibleMazeElementsToProcess = planeBuilder.NextPossibleMazeElementsToProcess(buildingController.BuildingDirection, mouse.CurrentMouseOnMazeElement);
+        //buildingController.SetBuldingStatus(mouse.CurrentMouseOnMazeElement.IsMazeWall);
     }
 
     public void ProcessNextMazeElement()
     {     
-     
+     /*
         if (buildingController.IsCurrentMazeElementLayOnAnyNextMazeElementAxisLine())
         {
             IMazeElement nextMazeElementToProcess = mouse.CurrentMouseOnMazeElement;
@@ -59,7 +59,7 @@ public class GameMaster
         else 
         {
             //destrowy
-        }
+        }*/
     }
 
    

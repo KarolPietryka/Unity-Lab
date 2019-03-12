@@ -17,8 +17,8 @@ public class NumberOfMazeElementsInGamePlaneAreaTest: AbstractionPlaneTestRoot
         float mazeElementsGapBetween = 1;
 
         var planeElementsBounds = getPlaneElementsBoundsMock(gamePlaneBounds, mazeElementBounds, mazeElementsGapBetween);
-        var numberOfMazeElementsInGamePlaneAreaTest = Substitute.For<NumberOfMazeElementsInGamePlaneArea>();
-        numberOfMazeElementsInGamePlaneAreaTest.SetPlaneElementsBounds(planeElementsBounds);
+        var numberOfMazeElementsInGamePlaneAreaTest = Substitute.For<NumberOfMazeElementsInGamePlaneArea>(planeElementsBounds);
+        //numberOfMazeElementsInGamePlaneAreaTest.SetPlaneElementsBounds(planeElementsBounds);
 
         int intagerNumberOfMazeElementsOnXAxisInGamePlaneArea = (int)numberOfMazeElementsInGamePlaneAreaTest.IntagerNumberOfMazeElementOnXAndYAxisInGamePlaneArea().x;
 
@@ -33,8 +33,8 @@ public class NumberOfMazeElementsInGamePlaneAreaTest: AbstractionPlaneTestRoot
         float mazeElementsGapBetween = 1;
 
         var planeElementsBounds = getPlaneElementsBoundsMock(gamePlaneBounds, mazeElementBounds, mazeElementsGapBetween);
-        var numberOfMazeElementsInGamePlaneAreaTest = Substitute.For<NumberOfMazeElementsInGamePlaneArea>();
-        numberOfMazeElementsInGamePlaneAreaTest.SetPlaneElementsBounds(planeElementsBounds);
+        var numberOfMazeElementsInGamePlaneAreaTest = Substitute.For<NumberOfMazeElementsInGamePlaneArea>(planeElementsBounds);
+        //numberOfMazeElementsInGamePlaneAreaTest.SetPlaneElementsBounds(planeElementsBounds);
 
         int intagerNumberOfMazeElementsOnXAxisInGamePlaneArea = (int)numberOfMazeElementsInGamePlaneAreaTest.IntagerNumberOfMazeElementOnXAndYAxisInGamePlaneArea().x;
 
@@ -50,8 +50,8 @@ public class NumberOfMazeElementsInGamePlaneAreaTest: AbstractionPlaneTestRoot
         float mazeElementsGapBetween = 1;
 
         var planeElementsBounds = getPlaneElementsBoundsMock(gamePlaneBounds, mazeElementBounds, mazeElementsGapBetween);
-        var numberOfMazeElementsInGamePlaneAreaTest = Substitute.For<NumberOfMazeElementsInGamePlaneArea>();
-        numberOfMazeElementsInGamePlaneAreaTest.SetPlaneElementsBounds(planeElementsBounds);
+        var numberOfMazeElementsInGamePlaneAreaTest = Substitute.For<NumberOfMazeElementsInGamePlaneArea>(planeElementsBounds);
+        //numberOfMazeElementsInGamePlaneAreaTest.SetPlaneElementsBounds(planeElementsBounds);
 
         int intagerNumberOfMazeElementsOnXAxisInGamePlaneArea = (int)numberOfMazeElementsInGamePlaneAreaTest.IntagerNumberOfMazeElementOnXAndYAxisInGamePlaneArea().x;
 
@@ -66,8 +66,8 @@ public class NumberOfMazeElementsInGamePlaneAreaTest: AbstractionPlaneTestRoot
         float mazeElementsGapBetween = 1;
 
         var planeElementsBounds = getPlaneElementsBoundsMock(gamePlaneBounds, mazeElementBounds, mazeElementsGapBetween);
-        var numberOfMazeElementsInGamePlaneAreaTest = Substitute.For<NumberOfMazeElementsInGamePlaneArea>();
-        numberOfMazeElementsInGamePlaneAreaTest.SetPlaneElementsBounds(planeElementsBounds);
+        var numberOfMazeElementsInGamePlaneAreaTest = Substitute.For<NumberOfMazeElementsInGamePlaneArea>(planeElementsBounds);
+        //numberOfMazeElementsInGamePlaneAreaTest.SetPlaneElementsBounds(planeElementsBounds);
 
         int intagerNumberOfMazeElementsOnXAxisInGamePlaneArea = (int)numberOfMazeElementsInGamePlaneAreaTest.IntagerNumberOfMazeElementOnXAndYAxisInGamePlaneArea().x;
 
@@ -82,8 +82,8 @@ public class NumberOfMazeElementsInGamePlaneAreaTest: AbstractionPlaneTestRoot
         float mazeElementsGapBetween = 1;
 
         var planeElementsBounds = getPlaneElementsBoundsMock(gamePlaneBounds, mazeElementBounds, mazeElementsGapBetween);
-        var numberOfMazeElementsInGamePlaneAreaTest = Substitute.For<NumberOfMazeElementsInGamePlaneArea>();
-        numberOfMazeElementsInGamePlaneAreaTest.SetPlaneElementsBounds(planeElementsBounds);
+        var numberOfMazeElementsInGamePlaneAreaTest = Substitute.For<NumberOfMazeElementsInGamePlaneArea>(planeElementsBounds);
+        //numberOfMazeElementsInGamePlaneAreaTest.SetPlaneElementsBounds(planeElementsBounds);
 
         int intagerNumberOfMazeElementsOnXAxisInGamePlaneArea = (int)numberOfMazeElementsInGamePlaneAreaTest.IntagerNumberOfMazeElementOnXAndYAxisInGamePlaneArea().x;
 
@@ -98,8 +98,8 @@ public class NumberOfMazeElementsInGamePlaneAreaTest: AbstractionPlaneTestRoot
         float mazeElementsGapBetween = 1;
 
         var planeElementsBounds = getPlaneElementsBoundsMock(gamePlaneBounds, mazeElementBounds, mazeElementsGapBetween);
-        var numberOfMazeElementsInGamePlaneAreaTest = Substitute.For<NumberOfMazeElementsInGamePlaneArea>();
-        numberOfMazeElementsInGamePlaneAreaTest.SetPlaneElementsBounds(planeElementsBounds);
+        var numberOfMazeElementsInGamePlaneAreaTest = Substitute.For<NumberOfMazeElementsInGamePlaneArea>(planeElementsBounds);
+        //numberOfMazeElementsInGamePlaneAreaTest.SetPlaneElementsBounds(planeElementsBounds);
 
         int intagerNumberOfMazeElementsOnXAxisInGamePlaneArea = (int)numberOfMazeElementsInGamePlaneAreaTest.IntagerNumberOfMazeElementOnXAndYAxisInGamePlaneArea().x;
 
@@ -114,8 +114,8 @@ public class NumberOfMazeElementsInGamePlaneAreaTest: AbstractionPlaneTestRoot
         float mazeElementsGapBetween = 1;
 
         var planeElementsBounds = getPlaneElementsBoundsMock(gamePlaneBounds, mazeElementBounds, mazeElementsGapBetween);
-        var numberOfMazeElementsInGamePlaneAreaTest = Substitute.For<NumberOfMazeElementsInGamePlaneArea>();
-        numberOfMazeElementsInGamePlaneAreaTest.SetPlaneElementsBounds(planeElementsBounds);
+        var numberOfMazeElementsInGamePlaneAreaTest = Substitute.For<NumberOfMazeElementsInGamePlaneArea>(planeElementsBounds);
+        //numberOfMazeElementsInGamePlaneAreaTest.SetPlaneElementsBounds(planeElementsBounds);
 
         int intagerNumberOfMazeElementsOnXAxisInGamePlaneArea = (int)numberOfMazeElementsInGamePlaneAreaTest.IntagerNumberOfMazeElementOnXAndYAxisInGamePlaneArea().x;
 
@@ -130,8 +130,8 @@ public class NumberOfMazeElementsInGamePlaneAreaTest: AbstractionPlaneTestRoot
         float mazeElementsGapBetween = 1;
 
         var planeElementsBounds = getPlaneElementsBoundsMock(gamePlaneBounds, mazeElementBounds, mazeElementsGapBetween);
-        var numberOfMazeElementsInGamePlaneAreaTest = Substitute.For<NumberOfMazeElementsInGamePlaneArea>();
-        numberOfMazeElementsInGamePlaneAreaTest.SetPlaneElementsBounds(planeElementsBounds);
+        var numberOfMazeElementsInGamePlaneAreaTest = Substitute.For<NumberOfMazeElementsInGamePlaneArea>(planeElementsBounds);
+        //numberOfMazeElementsInGamePlaneAreaTest.SetPlaneElementsBounds(planeElementsBounds);
 
         int intagerNumberOfMazeElementsOnXAxisInGamePlaneArea = (int)numberOfMazeElementsInGamePlaneAreaTest.IntagerNumberOfMazeElementOnXAndYAxisInGamePlaneArea().y;
 
@@ -148,8 +148,8 @@ public class NumberOfMazeElementsInGamePlaneAreaTest: AbstractionPlaneTestRoot
         float mazeElementsGapBetween = 1;
 
         var planeElementsBounds = getPlaneElementsBoundsMock(gamePlaneBounds, mazeElementBounds, mazeElementsGapBetween);
-        var numberOfMazeElementsInGamePlaneAreaTest = Substitute.For<NumberOfMazeElementsInGamePlaneArea>();
-        numberOfMazeElementsInGamePlaneAreaTest.SetPlaneElementsBounds(planeElementsBounds);
+        var numberOfMazeElementsInGamePlaneAreaTest = Substitute.For<NumberOfMazeElementsInGamePlaneArea>(planeElementsBounds);
+        //numberOfMazeElementsInGamePlaneAreaTest.SetPlaneElementsBounds(planeElementsBounds);
 
         int intagerNumberOfMazeElementsOnXAxisInGamePlaneArea = (int)numberOfMazeElementsInGamePlaneAreaTest.IntagerNumberOfMazeElementOnXAndYAxisInGamePlaneArea().y;
 
@@ -165,8 +165,8 @@ public class NumberOfMazeElementsInGamePlaneAreaTest: AbstractionPlaneTestRoot
         float mazeElementsGapBetween = 1;
 
         var planeElementsBounds = getPlaneElementsBoundsMock(gamePlaneBounds, mazeElementBounds, mazeElementsGapBetween);
-        var numberOfMazeElementsInGamePlaneAreaTest = Substitute.For<NumberOfMazeElementsInGamePlaneArea>();
-        numberOfMazeElementsInGamePlaneAreaTest.SetPlaneElementsBounds(planeElementsBounds);
+        var numberOfMazeElementsInGamePlaneAreaTest = Substitute.For<NumberOfMazeElementsInGamePlaneArea>(planeElementsBounds);
+        //numberOfMazeElementsInGamePlaneAreaTest.SetPlaneElementsBounds(planeElementsBounds);
 
         int intagerNumberOfMazeElementsOnXAxisInGamePlaneArea = (int)numberOfMazeElementsInGamePlaneAreaTest.IntagerNumberOfMazeElementOnXAndYAxisInGamePlaneArea().y;
 
@@ -182,8 +182,8 @@ public class NumberOfMazeElementsInGamePlaneAreaTest: AbstractionPlaneTestRoot
         float mazeElementsGapBetween = 1;
 
         var planeElementsBounds = getPlaneElementsBoundsMock(gamePlaneBounds, mazeElementBounds, mazeElementsGapBetween);
-        var numberOfMazeElementsInGamePlaneAreaTest = Substitute.For<NumberOfMazeElementsInGamePlaneArea>();
-        numberOfMazeElementsInGamePlaneAreaTest.SetPlaneElementsBounds(planeElementsBounds);
+        var numberOfMazeElementsInGamePlaneAreaTest = Substitute.For<NumberOfMazeElementsInGamePlaneArea>(planeElementsBounds);
+        //numberOfMazeElementsInGamePlaneAreaTest.SetPlaneElementsBounds(planeElementsBounds);
 
         int intagerNumberOfMazeElementsOnXAxisInGamePlaneArea = (int)numberOfMazeElementsInGamePlaneAreaTest.IntagerNumberOfMazeElementOnXAndYAxisInGamePlaneArea().y;
 
@@ -199,8 +199,8 @@ public class NumberOfMazeElementsInGamePlaneAreaTest: AbstractionPlaneTestRoot
         float mazeElementsGapBetween = 1;
 
         var planeElementsBounds = getPlaneElementsBoundsMock(gamePlaneBounds, mazeElementBounds, mazeElementsGapBetween);
-        var numberOfMazeElementsInGamePlaneAreaTest = Substitute.For<NumberOfMazeElementsInGamePlaneArea>();
-        numberOfMazeElementsInGamePlaneAreaTest.SetPlaneElementsBounds(planeElementsBounds);
+        var numberOfMazeElementsInGamePlaneAreaTest = Substitute.For<NumberOfMazeElementsInGamePlaneArea>(planeElementsBounds);
+        //numberOfMazeElementsInGamePlaneAreaTest.SetPlaneElementsBounds(planeElementsBounds);
 
         int intagerNumberOfMazeElementsOnXAxisInGamePlaneArea = (int)numberOfMazeElementsInGamePlaneAreaTest.IntagerNumberOfMazeElementOnXAndYAxisInGamePlaneArea().y;
 

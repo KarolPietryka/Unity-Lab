@@ -196,7 +196,7 @@ public class CameraMovementTest
         Vector2 currentCameraPosition = new Vector3(0, 0);
 
         var inputProvider = GetMouseMock(fakeMousePosition, 1);
-        var elemensBounds = GetElementsBoundsMock(gamePlaneBounds);
+        //var elemensBounds = GetElementsBoundsMock(gamePlaneBounds);
         var cameraMovementController = GetCameraMovementControllerMock(offset, xySpeed, currentCameraPosition);
 
         bool shouldCameraMoveInDirection = cameraMovementController.ShouldCameraMoveInDirection(Direction.Down);

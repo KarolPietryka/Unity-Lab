@@ -6,9 +6,14 @@ public interface IReversalOfMazeElements
 {
     void ReverseFromToInList(Vector2 firstMazeElementToReverseIndex, Vector2 lastMazeElementToReverseIndex, Direction processDirection, List<IMazeElement> mazeElementsToProcess);
 }
+
 public class ReversalOfMazeElements : IReversalOfMazeElements{
 
+    List<IMazeElement> unexploredWalkableMazeElementsList;
+
     private delegate void Reverse(Vector2 firstMazeElementToReverseIndex, Vector2 lastMazeElementToReverseIndex, List<IMazeElement> mazeElementsToProcess);
+
+    public ReversalOfMazeElements() { }
 
     public void ReverseFromToInList(Vector2 firstMazeElementToReverseIndex, Vector2 lastMazeElementToReverseIndex, Direction processDirection, List<IMazeElement> mazeElementsToProcess)
     {

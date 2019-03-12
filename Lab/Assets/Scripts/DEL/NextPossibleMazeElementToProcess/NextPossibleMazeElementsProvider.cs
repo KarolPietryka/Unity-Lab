@@ -6,9 +6,9 @@ public interface INextPossibleMazeElementsProvider
 {
     IMazeElement[] GetNextPossibleMazeElementsToProcess();
 }
-public class NextPossibleMazeElementsProvider : INextPossibleMazeElementsProvider{
+public class NextPossibleMazeElementsProvider{ //: INextPossibleMazeElementsProvider{
 
-    INextPossibleRegularMazeElements nextPossibleRegularMazeElements;
+   /* INextPossibleRegularMazeElements nextPossibleRegularMazeElements;
     INextPossibleExtreamPointMazeElements nextPossibleExtreamPointMazeElements;
 
     public NextPossibleMazeElementsProvider(
@@ -36,5 +36,5 @@ public class NextPossibleMazeElementsProvider : INextPossibleMazeElementsProvide
             NextPossibleMazeElementsToProcess = nextPossibleExtreamPointMazeElements.NextPossibleMazeElementsToProcessForExtremePoints();
         }
         return NextPossibleMazeElementsToProcess;
-    }  
+    }  */
 }

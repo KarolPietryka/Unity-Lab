@@ -7,7 +7,6 @@ public class PlaneBoundry : MonoBehaviour, IPlaneBuilder, IPlaneElementsBounds
     private Bounds gamePlaneBound;
     private Bounds mazeElementBound;
     private PlaneBuilder gamePlaneBuilder;
-    private NextPossibleMazeElementsProvider nextPossibleMazeElementsToProcess;
     [SerializeField]
     private float mazeElementGapBetween;
     [SerializeField]
@@ -51,16 +50,20 @@ public class PlaneBoundry : MonoBehaviour, IPlaneBuilder, IPlaneElementsBounds
 
     void Awake ()
     {
-        gamePlaneBuilder = new PlaneBuilder();
-
         MazeElementBounds = MazeElementPrefab.GetComponent<SpriteRenderer>().bounds;
         GamePlaneBounds = new Bounds(transform.Find("Sprite").position, transform.Find("Sprite").GetComponent<SpriteRenderer>().bounds.size);
           
         MazeElementAndGapSumOn = new Vector2(MazeElementSidesLenght.x + MazeElementGapBetween, MazeElementSidesLenght.y + MazeElementGapBetween);
 
-        gamePlaneBuilder.SetInterfaces(this, this);
-        //nextPossibleMazeElementsToProcess.SetPlaneController(this);
+        //gamePlaneBuilder.SetInterfaces(this, this);
+        gamePlaneBuilder = new PlaneBuilder(
+            new FirstUpLeftMazeElementPositionProvider(this, this),
+            new NumberOfMazeElementsInGamePlaneArea(this),
+            this,
+            this);
         CreateGamePlaneGridInScene();
+
+
     }
 
     void CreateGamePlaneGridInScene()
@@ -81,14 +84,14 @@ public class PlaneBoundry : MonoBehaviour, IPlaneBuilder, IPlaneElementsBounds
          MazeArray = new IMazeElement[(int)IntagerNumberOfMazeElementsOnXAndY.x, (int)IntagerNumberOfMazeElementsOnXAndY.y];
     }
 
-    public IMazeElement[] NextPossibleMazeElementsToProcess(Direction buildingDirection, IMazeElement currentMouseOnMazeElement)
-    {
-        nextPossibleMazeElementsToProcess = new NextPossibleMazeElementsProvider(currentMouseOnMazeElement.Index, buildingDirection, this);
-        return nextPossibleMazeElementsToProcess.GetNextPossibleMazeElementsToProcess();
-    }
-
     public IMazeElement GetFromMazeArray(int x, int y)
     {
         return MazeArray[x, y];
     }
+
+    public List<IMazeElement> GetNeighboursOfMazeElement(IMazeElement mazeElement)
+    {
+        return gamePlaneBuilder.GetNeighboursOfMazeElement(mazeElement);
+    }
+
 }

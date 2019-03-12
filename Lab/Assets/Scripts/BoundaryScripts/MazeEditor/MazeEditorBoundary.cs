@@ -12,14 +12,14 @@ public interface IInputMouseButtons
 public class MazeEditorBoundary : MonoBehaviour, IInputMouseButtons {
 
     private IMouse Mouse;
-    private IPlaneBuilder planeBuilder;//test
+    private IPlaneBuilder planeBuilder;
     private IMazeEditor MazeEditor;
 
 
     public void Awake()
     {
         Mouse = GetComponent<MouseBoundry>();
-        planeBuilder = GameObject.Find("Plane").GetComponent<PlaneBoundry>();//test
+        planeBuilder = GameObject.Find("Plane").GetComponent<PlaneBoundry>();
 
 
         MazeEditor = new MazeEditor(
@@ -56,7 +56,6 @@ public class MazeEditorBoundary : MonoBehaviour, IInputMouseButtons {
 
     private void Update()
     {
-
         MazeEditor.Update();
     }
 }

@@ -6,11 +6,14 @@ public interface IChangesOfMazeElements
 {
     void ChangeMazeElementsInListFromTo(IMouse MouseBoundry, Direction processDirection, List<IMazeElement> mazeElementsToProcess, bool newIsMazeWallForRoot);
 }
-
     
 public class ChangesOfMazeElements : IChangesOfMazeElements{
 
+    List<IMazeElement> unexploredWalkableMazeElementsList;
+
     private delegate void Change(Vector2 firstMazeElementToReverseIndex, Vector2 lastMazeElementToReverseIndex, List<IMazeElement> mazeElementsToProcess, bool newIsMazeWallValue);
+
+    public ChangesOfMazeElements() { }
 
     public void ChangeMazeElementsInListFromTo(IMouse MouseBoundry, Direction processDirection, List<IMazeElement> mazeElementsToProcess, bool newIsMazeWallForRoot)
     {

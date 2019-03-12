@@ -8,7 +8,6 @@ public interface IMazeElementsListFinalProcess
 }
 public class MazeElementsListFinalProcess : IMazeElementsListFinalProcess
 {
-
     public void Execute(List<IMazeElement> mazeElementsToProcess, bool newIsMazeWallForRootMazeElement)
     {
         mazeElementsToProcess.ForEach(delegate (IMazeElement mazeElement)

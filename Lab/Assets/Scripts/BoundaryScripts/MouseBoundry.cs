@@ -61,7 +61,14 @@ public class MouseBoundry : MonoBehaviour, IMouse{
 
     public Vector2 GetLastMouseClickMazeElementIndex()
     {
-        return LastMouseClickMazeElement.Index;
+        try
+        {
+            return LastMouseClickMazeElement.Index;
+        }
+        catch (System.NullReferenceException)
+        {
+            return CurrentMouseOnMazeElement.Index;
+        }
     }
 
     public void UpdateLastMouseClickPosition(Vector3 newLastMouseClickPosition)

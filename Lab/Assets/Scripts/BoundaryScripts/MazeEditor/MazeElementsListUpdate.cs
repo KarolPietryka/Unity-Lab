@@ -10,6 +10,7 @@ public class MazeElementsListUpdate : IMazeElementsListUpdate{
 
     private IPlaneBuilder planeBuilder;
     private IMouse mouseBoundary;
+
     public List<IMazeElement> mazeElementsToProcess;
 
     public MazeElementsListUpdate(IMouse _mouseBoundary, IPlaneBuilder _planeBuilder)
@@ -24,7 +25,7 @@ public class MazeElementsListUpdate : IMazeElementsListUpdate{
         Vector2 LastMouseClickMazeElementIndex = mouseBoundary.GetLastMouseClickMazeElementIndex();
         Vector2 CurrenMouseOntMazeElementIndex = mouseBoundary.GetCurrentMouseOnMazeElementIndex();
 
-        AddToListIfNotBelongToAnotherWall(planeBuilder.GetFromMazeArray((int)LastMouseClickMazeElementIndex.x, (int)LastMouseClickMazeElementIndex.y), newIsMazeWallForRootMazeElement);
+        AddToListMouseClickOnMazeElement(LastMouseClickMazeElementIndex, newIsMazeWallForRootMazeElement);
         switch (_processDirection)
         {
             case Direction.Left:
@@ -81,4 +82,8 @@ public class MazeElementsListUpdate : IMazeElementsListUpdate{
         }
     }
 
+    private void AddToListMouseClickOnMazeElement(Vector2 LastMouseClickMazeElementIndex, bool newIsMazeWallForRootMazeElement)
+    {
+        AddToListIfNotBelongToAnotherWall(planeBuilder.GetFromMazeArray((int)LastMouseClickMazeElementIndex.x, (int)LastMouseClickMazeElementIndex.y), newIsMazeWallForRootMazeElement);
+    }
 }

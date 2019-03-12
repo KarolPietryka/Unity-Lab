@@ -7,8 +7,6 @@ public interface IMazeElementProcessing
     void FirstMazeElementBuildProcess();
     void MazeElementInLineProcessing();
     void MazeElementsFinalProcess();
-
-
 }
 public class MazeElementProcessing : IMazeElementProcessing {
 
@@ -21,10 +19,11 @@ public class MazeElementProcessing : IMazeElementProcessing {
         firstMazeElementProcessing = _firstMazeElementProcessing;
         mazeElementInLineProcessing = _mazeElementInLineProcessing;
     }
+
     public void FirstMazeElementBuildProcess()
     {
         firstMazeElementProcessing.Execute();
-        mazeElementInLineProcessing.setNewIsMazeWallForRoot(firstMazeElementProcessing.GetNewIsMazeWallForRoot());
+        mazeElementInLineProcessing.setNewIsMazeWallForRoot(firstMazeElementProcessing.GetIsMazeWallForRootAfterCurrentProcess());
     }
     public void MazeElementInLineProcessing()
     {

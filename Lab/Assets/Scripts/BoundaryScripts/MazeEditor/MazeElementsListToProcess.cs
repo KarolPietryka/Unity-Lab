@@ -2,18 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IMazeElementsList
+public interface IMazeElementsListToProcess
 {
     void UpdateMazeElementsToProcessList(Direction processDirection, bool newIsMazeWallForRootMazeElement);
     void ReverseFromToInList(Vector2 firstMazeElementToReverseIndex, Vector2 lastMazeElementToReverseIndex, Direction processDirection);
     void ChangeMazeElementsInListFromTo(IMouse mouseBoundary, Direction processDirection, bool newIsMazeWallForRootMazeElement);
     void MazeElementsListFinalProcess(bool newIsMazeWallForRootMazeElement);
 
-
-
     List<IMazeElement> MazeElementsToProcess { get; }
 }
-public class MazeElementsListToProcess : IMazeElementsList{
+public class MazeElementsListToProcess : IMazeElementsListToProcess{
 
     public List<IMazeElement> MazeElementsToProcess{ get; set; }
     IReversalOfMazeElements reversalOfMazeElements;
@@ -33,6 +31,7 @@ public class MazeElementsListToProcess : IMazeElementsList{
         mazeElementsListFinalProcess = _mazeElementsListFinalProcess;
         MazeElementsToProcess = new List<IMazeElement>();
     }
+
     public void UpdateMazeElementsToProcessList(Direction processDirection, bool newIsMazeWallForRootMazeElement)
     {
         MazeElementsToProcess.Clear();

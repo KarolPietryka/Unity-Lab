@@ -8,29 +8,26 @@ public interface IPlaneBuilder
     Vector2 IntagerNumberOfMazeElementsOnXAndY { get; set; }
     void InitMazeArray();
     IMazeElement GetFromMazeArray(int x, int y);
-    IMazeElement[] NextPossibleMazeElementsToProcess(Direction buildingDirection, IMazeElement currentMouseOnMazeElement);
+    List<IMazeElement> GetNeighboursOfMazeElement(IMazeElement mazeElement);
 }
-public class PlaneBuilder:PlaneBuilderInitiator
+public class PlaneBuilder : PlaneBuilderInitiator
 {
-    public PlaneBuilder()
+    public PlaneBuilder() { }
+    public PlaneBuilder(IFirstUpLeftMazeElementPositionProvider _firstUpLeftMazeElementPositionProvider, INumberOfMazeElementsInGamePlaneArea _numberOfMazeElementsInGamePlaneArea, IPlaneBuilder _planeBuilder,
+        IPlaneElementsBounds _planeElementsBounds)
     {
-        firstUpLeftMazeElementProvider = new FirstUpLeftMazeElementPositionProvider();
-        numberOfMazeElementsInGamePlaneArea = new NumberOfMazeElementsInGamePlaneArea();
-    }
-    public void SetInterfaces(IPlaneBuilder _planeBuilder, IPlaneElementsBounds _planeElementsBounds)
-    {
-        SetPlaneController(_planeBuilder);
-        SetPlaneElementsBounds(_planeElementsBounds);
-
-        InitFirstUpLeftMazeElementProvider();
-        InitNumberOfMazeElementsInGamePlaneArea();
+        firstUpLeftMazeElementPositionProvider = _firstUpLeftMazeElementPositionProvider;
+        numberOfMazeElementsInGamePlaneArea = _numberOfMazeElementsInGamePlaneArea;
+        PlaneBuilder = _planeBuilder;
+        PlaneElementsBounds = _planeElementsBounds;
     }
 
+    
     public void CreateGamePlaneGridInScene()
     {
         PlaneBuilder.IntagerNumberOfMazeElementsOnXAndY = numberOfMazeElementsInGamePlaneArea.IntagerNumberOfMazeElementOnXAndYAxisInGamePlaneArea();
         Vector3 positionOfMazeElement;
-        Vector3 positionOfFirstUpLeftMazeElement = firstUpLeftMazeElementProvider.PositionOfFirstUpLeftMazeElementOnGamePlaneArea();
+        Vector3 positionOfFirstUpLeftMazeElement = firstUpLeftMazeElementPositionProvider.PositionOfFirstUpLeftMazeElementOnGamePlaneArea();
         Vector2 distanceBetweenTwoMazeElementsCentersOnAxis = CountDistanceBetweenTwoMazeElementsCentersOnAxis();
 
         PlaneBuilder.InitMazeArray();
@@ -58,4 +55,16 @@ public class PlaneBuilder:PlaneBuilderInitiator
         return distanceBetweenTwoMazeElementsCentersOnAxis;
     }
 
+    public List<IMazeElement> GetNeighboursOfMazeElement(IMazeElement mazeElement)
+    {
+        List<IMazeElement> NeighboursList = new List<IMazeElement>();
+
+        NeighboursList.Add(PlaneBuilder.GetFromMazeArray(Mathf.Clamp((int)mazeElement.Index.x - 1, 0, (int)PlaneBuilder.IntagerNumberOfMazeElementsOnXAndY.x - 1), (int)mazeElement.Index.y));
+        NeighboursList.Add(PlaneBuilder.GetFromMazeArray(Mathf.Clamp((int)mazeElement.Index.x + 1, 0, (int)PlaneBuilder.IntagerNumberOfMazeElementsOnXAndY.x - 1), (int)mazeElement.Index.y));
+        NeighboursList.Add(PlaneBuilder.GetFromMazeArray((int)mazeElement.Index.x, Mathf.Clamp((int)mazeElement.Index.y - 1, 0, (int)PlaneBuilder.IntagerNumberOfMazeElementsOnXAndY.y - 1)));
+        NeighboursList.Add(PlaneBuilder.GetFromMazeArray((int)mazeElement.Index.x, Mathf.Clamp((int)mazeElement.Index.y + 1, 0, (int)PlaneBuilder.IntagerNumberOfMazeElementsOnXAndY.y - 1)));
+
+        Debug.Log(NeighboursList[0]);
+        return NeighboursList;
+    }
 }

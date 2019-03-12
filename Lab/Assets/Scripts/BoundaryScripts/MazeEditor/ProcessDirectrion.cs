@@ -7,8 +7,6 @@ public interface IProcessDirectionUpdate
     Direction ExecuteUpdate();
     bool WasProcessDirectionChange();
     Direction GetLastCheckDirection();
-    
-
 }
 public class ProcessDirectionUpdate : IProcessDirectionUpdate{
 

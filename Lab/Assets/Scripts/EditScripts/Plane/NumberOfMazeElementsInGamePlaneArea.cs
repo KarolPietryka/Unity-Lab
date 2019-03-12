@@ -2,14 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NumberOfMazeElementsInGamePlaneArea{
-
+public interface INumberOfMazeElementsInGamePlaneArea
+{
+    Vector2 IntagerNumberOfMazeElementOnXAndYAxisInGamePlaneArea();
+}
+public class NumberOfMazeElementsInGamePlaneArea : INumberOfMazeElementsInGamePlaneArea
+{
     public IPlaneElementsBounds planeElementsBounds;
 
-    public void SetPlaneElementsBounds(IPlaneElementsBounds _planeElementsBounds)
+    public NumberOfMazeElementsInGamePlaneArea(IPlaneElementsBounds _planeElementsBounds)
     {
         planeElementsBounds = _planeElementsBounds;
     }
+    /*
+    public void SetPlaneElementsBounds(IPlaneElementsBounds _planeElementsBounds)
+    {
+        planeElementsBounds = _planeElementsBounds;
+    }*/
 
     public Vector2 IntagerNumberOfMazeElementOnXAndYAxisInGamePlaneArea()
     {
