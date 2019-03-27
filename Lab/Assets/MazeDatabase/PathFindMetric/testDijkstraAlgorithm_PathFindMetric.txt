@@ -1,0 +1,7 @@
+14 is NumberOfVisitedNodes
+13 is NumberOfVisitedJunctions
+1 is NumberOfVisitedThreeWayJunctions
+12 is NumberOfVisitedFourWayJunctions
+0 is NumberOfVisitedDeadEnds
+0 is NumberOfVisitedHallwayNodes
+3 is PathLengthExpressedInNumberOfNodes

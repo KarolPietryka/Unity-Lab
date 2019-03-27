@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameMasterBoundary : MonoBehaviour, ITimeProvider
+public class GameMasterBoundary : MonoBehaviour, ITimeProvider //TODO to del?
 {
     [SerializeField]
     private GameObject MazeElementPrefab;
@@ -103,9 +103,11 @@ public interface IElementsBounds
 
 public interface IPlaneElementsBounds
 {
+   // Vector3 GamePlaneSpriteLocalScale { get; set; };
     Bounds GamePlaneBounds { get; set; }
     Bounds MazeElementBounds { get; set; }
     float MazeElementGapBetween { get; set; }
+    void GamePlaneSizeUpdate(Bounds newBound);
     /*Vector2 GamePlaneSidesLenght { get; set; }
     Vector2 MazeElementSidesLenght { get; set; }*/
     Vector2 MazeElementAndGapSumOn { get; set; }

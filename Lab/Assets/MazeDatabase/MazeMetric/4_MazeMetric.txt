@@ -1,0 +1,7 @@
+961 is TotalNumberOfNodes
+450 is TotalNumberOfWalkableNodes
+73 is TotalNumberOfJunctions
+71 is TotalNumberOfThreeWayJunctions
+2 is TotalNumberOfFourWayJunctions
+33 is TotalNumberOfDeadEnds
+343 is TotalNumberOfHallwayNodes

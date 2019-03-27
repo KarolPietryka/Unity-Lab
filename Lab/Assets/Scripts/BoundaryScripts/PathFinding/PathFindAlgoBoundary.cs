@@ -7,46 +7,52 @@ using UnityEngine.UI;
 public enum EPathFindAlgorithms
 {
     DijkstraAlgorithm,
-    EuclideanAStar
+    EuclideanAStar,
+    ManhattanAStar
 }
-public interface IPathFindAlgoBoundary
+public interface IMazeSpecialElementsSeeker
 {
     IMazeElement FindStartPlaceForPathFinding();
     IMazeElement FindDestinationPlaceForPathFinding();
 }
 
-public class PathFindAlgoBoundary : MonoBehaviour, IPathFindAlgoBoundary{
-
+public class PathFindAlgoBoundary : MonoBehaviour, IMazeSpecialElementsSeeker
+{
+    //IMazeInOutPoints mazeInOutPointsBoundary;
     IPathFindAlgo pathFindAlgo;
-    List<IMazeElement> pathFromStartToEnd;
-    List<IMazeElement> unexploredMazeElementsList;
+    //List<IMazeElement> pathFromStartToEnd;
+   // List<IMazeElement> unexploredMazeElementsList;
 
-    List<IMazeElement> openList;
-    List<IMazeElement> closeList;
 
     [SerializeField]
     PlaneBoundry planeBuilder;
     [SerializeField]
     Dropdown pathFindDropdownUI;
+    [SerializeField]
+    SaveSystemBoundary saveSystemBoundary;
+
+    PathFindProcessMetric pathFindProcessMetric;
+    MazeMetric mazeMetric;
+
 
     private void Awake()
     {
-        pathFromStartToEnd = new List<IMazeElement>();
-        unexploredMazeElementsList = new List<IMazeElement>(); //GetComponent<MazeEditorBoundary>().unexploredWalkableMazeElementsList;
-        openList = new List<IMazeElement>();
-        closeList = new List<IMazeElement>();
         this.enabled = false;
     }
-    private void Start()
-    {
-        //unexploredMazeElementsList = transform.GetComponentInParent<MazeEditorBoundary>().unexploredWalkableMazeElementsList;
 
-    }
 
     public void PathFind()
     {
+        pathFindProcessMetric = new PathFindProcessMetric();
+        mazeMetric = new MazeMetric(planeBuilder);
+
+        mazeMetric.SetMazeMetric();
+        saveSystemBoundary.SaveMazeMetric(mazeMetric);
+
         pathFindAlgo = CreatePathFindAlgo();
         pathFindAlgo.AppointPath();
+
+        saveSystemBoundary.SaveMetricForPathFindProcess(pathFindProcessMetric, GetPathFindMethodFromPathFindDropdown());
     }
 
 
@@ -58,11 +64,12 @@ public class PathFindAlgoBoundary : MonoBehaviour, IPathFindAlgoBoundary{
         return pathfinderAlgorithmFactory.CreatePathFindAlgo(
             GetPathFindMethodFromPathFindDropdown(),
             this,
-            pathFromStartToEnd,
+            new List<IMazeElement>(),
             planeBuilder,
-            unexploredMazeElementsList,
-            openList,
-            closeList);
+             new List<IMazeElement>(),
+            new List<IMazeElement>(),
+            new List<IMazeElement>(),
+             pathFindProcessMetric);
     }
     private EPathFindAlgorithms GetPathFindMethodFromPathFindDropdown()
     {

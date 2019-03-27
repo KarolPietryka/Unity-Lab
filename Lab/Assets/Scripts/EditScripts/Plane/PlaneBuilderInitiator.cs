@@ -28,15 +28,4 @@ public abstract class PlaneBuilderInitiator{
     {
         PlaneElementsBounds = _planeElementsBounds;
     }
-
-    /*public void InitFirstUpLeftMazeElementProvider()
-    {
-        firstUpLeftMazeElementProvider.SetPlaneController(PlaneBuilder);
-        firstUpLeftMazeElementProvider.SetPlaneElementsBounds(PlaneElementsBounds);
-    }*/
-
-    /*public void InitNumberOfMazeElementsInGamePlaneArea()
-    {
-        numberOfMazeElementsInGamePlaneArea.SetPlaneElementsBounds(PlaneElementsBounds);
-    }*/
 }

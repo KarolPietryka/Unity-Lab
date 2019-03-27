@@ -5,7 +5,7 @@ using UnityEngine;
 public enum BuildingStatus { Building, Dismantling }
 public enum Direction { Left, Up, Right, Down }
 
-public class GameMaster
+public class GameMaster// TODO to del?
 {
     public IBuildingController buildingController;
     public IMouse mouse;

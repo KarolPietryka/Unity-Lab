@@ -41,7 +41,7 @@ public class UnexploredMazeElements : IUnexploredMazeElements
             }
         }
     }
-    private bool IsMazeElementMazeWall(IMazeElement mazeElement)
+    private bool IsMazeElementMazeWall(IMazeElementPathFindParameters mazeElement)
     {
         return mazeElement.IsMazeWall;
     }

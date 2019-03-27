@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public interface IInputMouseButtons
 {
@@ -18,7 +19,7 @@ public class MazeEditorBoundary : MonoBehaviour, IInputMouseButtons {
 
     public void Awake()
     {
-        Mouse = GetComponent<MouseBoundry>();
+        Mouse = GameObject.Find("GameMaster").GetComponent<MouseBoundry>();
         planeBuilder = GameObject.Find("Plane").GetComponent<PlaneBoundry>();
 
 
@@ -43,15 +44,31 @@ public class MazeEditorBoundary : MonoBehaviour, IInputMouseButtons {
 
     public bool GetMouseButtonDown(int button)
     {
-        return Input.GetMouseButtonDown(button);
+        bool ret = false;
+        if (!EventSystem.current.IsPointerOverGameObject())
+        {
+            ret = Input.GetMouseButtonDown(button);
+        }
+        return ret;
     }
     public bool GetMouseButton(int button)
     {
-        return Input.GetMouseButton(button);
+        bool ret = false;
+        if (!EventSystem.current.IsPointerOverGameObject())
+        {
+            return Input.GetMouseButton(button);
+        }
+        return ret;
     }
     public bool GetMouseButtonUp(int button)
     {
-        return Input.GetMouseButtonUp(button);
+        bool ret = false;
+        if (!EventSystem.current.IsPointerOverGameObject())
+        {
+            return Input.GetMouseButtonUp(button);
+        }
+        return ret;
+
     }
 
     private void Update()

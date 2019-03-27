@@ -4,9 +4,9 @@ using UnityEngine;
 
 public static class PathDrawer 
 {
-    public static void DrawPathFromStartToEnd(IMazeElement destinationPoint)
+    public static void DrawPathFromStartToEnd(IMazeElementPathFindDrawingParameters destinationPoint)
     {
-        IMazeElement mazeElement = destinationPoint;
+        IMazeElementPathFindDrawingParameters mazeElement = destinationPoint;
         while (mazeElement.PathFindParent != null)
         {
             mazeElement.ChangeOnPathFindColor();

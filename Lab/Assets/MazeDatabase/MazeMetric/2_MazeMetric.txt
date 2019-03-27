@@ -1,0 +1,8 @@
+100 is TotalNumberOfNodes
+40 is TotalNumberOfWalkableNodes
+4 is TotalNumberOfJunctions
+3 is TotalNumberOfThreeWayJunctions
+1 is TotalNumberOfFourWayJunctions
+7 is TotalNumberOfDeadEnds
+29 is TotalNumberOfHallwayNodes
+100 | 40 | 4 | 3 | 1 | 7 | 29

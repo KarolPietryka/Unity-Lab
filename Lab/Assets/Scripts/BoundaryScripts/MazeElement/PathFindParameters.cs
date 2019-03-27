@@ -22,6 +22,4 @@ public class PathFindParameters : IPathFindingParameters
         DistanceHeuristic = int.MaxValue;
         PathFindParent = null;
     }
-
-
 }

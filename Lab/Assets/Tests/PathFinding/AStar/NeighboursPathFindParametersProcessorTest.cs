@@ -72,7 +72,7 @@ public class NeighboursPathFindParametersProcessorTest {
 
         var neighboursPathFindParametersProcessorTestSimplePasses = new NeighboursPathFindParametersProcessor(planeBuilder, destinationMazeElement, aStarWeightHeuristic);
 
-        neighboursPathFindParametersProcessorTestSimplePasses.ProcessNeighboursPathFindParameters(currentMazeElement, openCloseListController);
+        neighboursPathFindParametersProcessorTestSimplePasses.ProcessNeighboursPathFindParameters(currentMazeElement, openCloseListController, Substitute.For<IPathFindProcessMetric>());
 
         Assert.AreEqual(planeBuilder.GetFromMazeArray(4, 3).PathFindWeight, 11);
         Assert.AreEqual(planeBuilder.GetFromMazeArray(4, 3).PathFindDistanceHeuristic, 1);
@@ -89,7 +89,7 @@ public class NeighboursPathFindParametersProcessorTest {
 
         var neighboursPathFindParametersProcessorTestSimplePasses = new NeighboursPathFindParametersProcessor(planeBuilder, destinationMazeElement, aStarWeightHeuristic);
 
-        neighboursPathFindParametersProcessorTestSimplePasses.ProcessNeighboursPathFindParameters(currentMazeElement, openCloseListController);
+        neighboursPathFindParametersProcessorTestSimplePasses.ProcessNeighboursPathFindParameters(currentMazeElement, openCloseListController, Substitute.For<IPathFindProcessMetric>());
 
         Assert.AreEqual(planeBuilder.GetFromMazeArray(2, 3).PathFindWeight, 11);
         Assert.AreEqual(planeBuilder.GetFromMazeArray(2, 3).PathFindDistanceHeuristic, 3);
@@ -106,7 +106,7 @@ public class NeighboursPathFindParametersProcessorTest {
 
         var neighboursPathFindParametersProcessorTestSimplePasses = new NeighboursPathFindParametersProcessor(planeBuilder, destinationMazeElement, aStarWeightHeuristic);
 
-        neighboursPathFindParametersProcessorTestSimplePasses.ProcessNeighboursPathFindParameters(currentMazeElement, openCloseListController);
+        neighboursPathFindParametersProcessorTestSimplePasses.ProcessNeighboursPathFindParameters(currentMazeElement, openCloseListController, Substitute.For<IPathFindProcessMetric>());
 
         Assert.AreEqual(planeBuilder.GetFromMazeArray(3, 2).PathFindWeight, 11);
         Assert.AreEqual(planeBuilder.GetFromMazeArray(3, 2).PathFindDistanceHeuristic, Mathf.Sqrt(5));
@@ -123,7 +123,7 @@ public class NeighboursPathFindParametersProcessorTest {
 
         var neighboursPathFindParametersProcessorTestSimplePasses = new NeighboursPathFindParametersProcessor(planeBuilder, destinationMazeElement, aStarWeightHeuristic);
 
-        neighboursPathFindParametersProcessorTestSimplePasses.ProcessNeighboursPathFindParameters(currentMazeElement, openCloseListController);
+        neighboursPathFindParametersProcessorTestSimplePasses.ProcessNeighboursPathFindParameters(currentMazeElement, openCloseListController, Substitute.For<IPathFindProcessMetric>());
 
         Assert.AreEqual(planeBuilder.GetFromMazeArray(3, 2).PathFindWeight, 11);
         Assert.AreEqual(planeBuilder.GetFromMazeArray(3, 2).PathFindDistanceHeuristic, Mathf.Sqrt(5));
@@ -140,7 +140,7 @@ public class NeighboursPathFindParametersProcessorTest {
 
         var neighboursPathFindParametersProcessorTestSimplePasses = new NeighboursPathFindParametersProcessor(planeBuilder, destinationMazeElement, aStarWeightHeuristic);
 
-        neighboursPathFindParametersProcessorTestSimplePasses.ProcessNeighboursPathFindParameters(currentMazeElement, openCloseListController);
+        neighboursPathFindParametersProcessorTestSimplePasses.ProcessNeighboursPathFindParameters(currentMazeElement, openCloseListController, Substitute.For<IPathFindProcessMetric>());
 
         Assert.AreEqual(planeBuilder.GetFromMazeArray(3, 2).PathFindWeight, 11);
         Assert.AreNotEqual(planeBuilder.GetFromMazeArray(3, 2).PathFindDistanceHeuristic, Mathf.Sqrt(5.1f));
@@ -157,7 +157,7 @@ public class NeighboursPathFindParametersProcessorTest {
 
         var neighboursPathFindParametersProcessorTestSimplePasses = new NeighboursPathFindParametersProcessor(planeBuilder, destinationMazeElement, aStarWeightHeuristic);
 
-        neighboursPathFindParametersProcessorTestSimplePasses.ProcessNeighboursPathFindParameters(currentMazeElement, openCloseListController);
+        neighboursPathFindParametersProcessorTestSimplePasses.ProcessNeighboursPathFindParameters(currentMazeElement, openCloseListController, Substitute.For<IPathFindProcessMetric>());
 
         Assert.AreEqual(planeBuilder.GetFromMazeArray(1, 2).PathFindWeight, 11);
         Assert.AreEqual(planeBuilder.GetFromMazeArray(1, 2).PathFindDistanceHeuristic, Mathf.Sqrt(145));
@@ -174,7 +174,7 @@ public class NeighboursPathFindParametersProcessorTest {
 
         var neighboursPathFindParametersProcessorTestSimplePasses = new NeighboursPathFindParametersProcessor(planeBuilder, destinationMazeElement, aStarWeightHeuristic);
 
-        neighboursPathFindParametersProcessorTestSimplePasses.ProcessNeighboursPathFindParameters(currentMazeElement, openCloseListController);
+        neighboursPathFindParametersProcessorTestSimplePasses.ProcessNeighboursPathFindParameters(currentMazeElement, openCloseListController, Substitute.For<IPathFindProcessMetric>());
 
         openCloseListController.ReceivedWithAnyArgs(4).AddToOpenList(Substitute.For<IMazeElement>());
 

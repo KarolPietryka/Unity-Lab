@@ -12,21 +12,28 @@ public class DijkstraPathFinder : IPathFinder
     IUnexploredMazeElements unexploredMazeElements;
     IMazeElement startMazeElement;
     IMazeElement destinationMazeElement;
+    IPathFindProcessMetric pathFindProcessMetric;
 
-    public DijkstraPathFinder(IPlaneBuilder _planeBuilder, IUnexploredMazeElements _unexploredMazeElements, IMazeElement _startMazeElement, IMazeElement _destinationMazeElement)
+
+    public DijkstraPathFinder(IPlaneBuilder _planeBuilder,
+        IUnexploredMazeElements _unexploredMazeElements, 
+        IMazeElement _startMazeElement, 
+        IMazeElement _destinationMazeElement, 
+        IPathFindProcessMetric _pathFindProcessMetric)
     {
         planeBuilder = _planeBuilder;
         unexploredMazeElements = _unexploredMazeElements;
   
         startMazeElement = _startMazeElement;
         destinationMazeElement = _destinationMazeElement;
+
+        pathFindProcessMetric = _pathFindProcessMetric;
     }
 
 
 
     public List<IMazeElement> FindPath()
     {
-        //double startTime = Time.realtimeSinceStartup;
         List<IMazeElement> unexploredWalkableMazeElementsList = unexploredMazeElements.GetUnexploredList();
         bool destinationReach = false;
         startMazeElement.PathFindWeight = 0;
@@ -34,8 +41,9 @@ public class DijkstraPathFinder : IPathFinder
         while (unexploredWalkableMazeElementsList.Count > 0 && destinationReach == false) 
         {
             unexploredWalkableMazeElementsList.Sort((x, y) => x.PathFindWeight.CompareTo(y.PathFindWeight));
-
             IMazeElement currentMazeElement = unexploredWalkableMazeElementsList[0];
+
+            pathFindProcessMetric.IncreaseNumberOfVisitedNodes();
             if (currentMazeElement == destinationMazeElement)
             {
                 destinationReach = true;
@@ -43,11 +51,13 @@ public class DijkstraPathFinder : IPathFinder
             }
             unexploredWalkableMazeElementsList.Remove(currentMazeElement);
 
-            List<IMazeElement> neighbourMazeElementList = planeBuilder.GetNeighboursOfMazeElement(currentMazeElement);
+            List<IMazeElement> neighbourMazeElementList = planeBuilder.GetNeighboursOfMazeElement(currentMazeElement);  
 
             ProcessNeighboursPathFindParameters(neighbourMazeElementList, unexploredWalkableMazeElementsList, currentMazeElement);
         }
-        //double endTime = Time.realtimeSinceStartup - startTime;
+
+        List<IMazeElement> listFromStartToDestination = DestinationPath.GetListFromStartToDestination(destinationMazeElement);
+        pathFindProcessMetric.SetPathLengthExpressedInNumberOfNodes(listFromStartToDestination.Count);
 
         return DestinationPath.GetListFromStartToDestination(destinationMazeElement);
     }
@@ -72,6 +82,7 @@ public class DijkstraPathFinder : IPathFinder
                 }
             }
         }
+        pathFindProcessMetric.ProcessJunctionParametersBaseOn(neighbourMazeElementList);
     }
 }
 

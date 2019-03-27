@@ -6,14 +6,14 @@ public class PathfinderAlgorithmFactory  {
 
     public virtual IPathFindAlgo CreatePathFindAlgo(
         EPathFindAlgorithms ePathFindAlgorithm,
-        IPathFindAlgoBoundary pathFindAlgoBoundary,
+        IMazeSpecialElementsSeeker pathFindAlgoBoundary,
         List<IMazeElement> pathFromStartToEnd,
         IPlaneBuilder planeBuilder,
         List<IMazeElement> unexploredMazeElementsList,
         List<IMazeElement> openList,
-        List<IMazeElement> closeList)
+        List<IMazeElement> closeList,
+        IPathFindProcessMetric pathFindProcessMetric)
     {
-
         PathFindAlgo pathFindAlgo = null;
 
         switch (ePathFindAlgorithm)
@@ -29,8 +29,9 @@ public class PathfinderAlgorithmFactory  {
                             planeBuilder,
                             unexploredMazeElementsList),
                         pathFindAlgoBoundary.FindStartPlaceForPathFinding(),
-                        pathFindAlgoBoundary.FindDestinationPlaceForPathFinding()),
-                    new MazeElementsParametersRestarter(
+                        pathFindAlgoBoundary.FindDestinationPlaceForPathFinding(),
+                        pathFindProcessMetric),               
+                    new MazeRestarter(
                         planeBuilder));
                           
                 break;
@@ -40,7 +41,7 @@ public class PathfinderAlgorithmFactory  {
                 pathFindAlgo = new PathFindAlgo(
                     pathFindAlgoBoundary,
                     pathFromStartToEnd,
-                    new EuclideanAStarPathFinder(
+                    new AStarPathFinder(
                         pathFindAlgoBoundary.FindStartPlaceForPathFinding(),
                         pathFindAlgoBoundary.FindDestinationPlaceForPathFinding(),                   
                         new OpenCloseListController(
@@ -49,12 +50,33 @@ public class PathfinderAlgorithmFactory  {
                         new NeighboursPathFindParametersProcessor(
                             planeBuilder,
                             pathFindAlgoBoundary.FindDestinationPlaceForPathFinding(),
-                            new AStarEuclideanDistanceHeuristic())),
-                    new MazeElementsParametersRestarter(
+                            new AStarEuclideanDistanceHeuristic()),
+                        pathFindProcessMetric),
+                    new MazeRestarter(
                         planeBuilder));
                         
                 break;
-                    
+
+            case EPathFindAlgorithms.ManhattanAStar:
+
+                pathFindAlgo = new PathFindAlgo(
+                    pathFindAlgoBoundary,
+                    pathFromStartToEnd,
+                    new AStarPathFinder(
+                        pathFindAlgoBoundary.FindStartPlaceForPathFinding(),
+                        pathFindAlgoBoundary.FindDestinationPlaceForPathFinding(),
+                        new OpenCloseListController(
+                            openList,
+                            closeList),
+                        new NeighboursPathFindParametersProcessor(
+                            planeBuilder,
+                            pathFindAlgoBoundary.FindDestinationPlaceForPathFinding(),
+                            new AStarManhattanDistanceHeuristic()),
+                        pathFindProcessMetric),
+                    new MazeRestarter(
+                        planeBuilder));
+
+                break;
         }
         
 

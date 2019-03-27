@@ -8,19 +8,19 @@ public interface IPathFindAlgo
 }
 public class PathFindAlgo : IPathFindAlgo
 {
-    IPathFindAlgoBoundary pathFindAlgoBoundary;
+    IMazeSpecialElementsSeeker pathFindAlgoBoundary;
 
     List<IMazeElement> pathFromStartToEnd;
     IPathFinder pathFinder;
-    IMazeElementsParametersRestarter mazeElementsParametersRestarter;
+    IMazeElementsPathFindParametersRestarter mazeElementsPathFindParametersRestarter;
 
 
-    public PathFindAlgo(IPathFindAlgoBoundary _pathFindAlgoBoundary, List<IMazeElement> _pathFromStartToEnd, IPathFinder _pathFinder, IMazeElementsParametersRestarter _mazeElementsParametersRestarter)
+    public PathFindAlgo(IMazeSpecialElementsSeeker _pathFindAlgoBoundary, List<IMazeElement> _pathFromStartToEnd, IPathFinder _pathFinder, IMazeElementsPathFindParametersRestarter _mazeElementsPathFindParametersRestarter)
     {
         pathFindAlgoBoundary = _pathFindAlgoBoundary;
         pathFromStartToEnd = _pathFromStartToEnd;
         pathFinder = _pathFinder;
-        mazeElementsParametersRestarter = _mazeElementsParametersRestarter;
+        mazeElementsPathFindParametersRestarter = _mazeElementsPathFindParametersRestarter;
 
     }
 
@@ -29,10 +29,9 @@ public class PathFindAlgo : IPathFindAlgo
 
     public void AppointPath()
     {
-        mazeElementsParametersRestarter.RestartMazeElementsParameters();
+        mazeElementsPathFindParametersRestarter.RestartMazeElementsParameters();
         pathFromStartToEnd = FindPath();
         PathDrawer.DrawPathFromStartToEnd(pathFindAlgoBoundary.FindDestinationPlaceForPathFinding());
-
     }
 
 

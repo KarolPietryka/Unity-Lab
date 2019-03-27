@@ -2,41 +2,33 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IMazeElement
+public interface IMazeElementPathFindDrawingParameters
+{
+    void ChangeOnPathFindColor();
+    IMazeElement PathFindParent { get; set; }
+}
+public interface IMazeElementPathFindParameters
+{
+    bool IsMazeWall { get; set; }
+    float PathFindWeight { get; set; }
+    float PathFindDistanceHeuristic { get; set; }
+    void ResetPathFindingParameters();
+}
+public interface IMazeElement: IMazeElementPathFindDrawingParameters, IMazeElementPathFindParameters
 {
     string Tag { get; set; }
-    bool IsMazeWall { get; set; }
     bool IsElementOfAnotherWall { get; set; }
     Vector2 Index { get; set; }
     void ReverseIsMazeWall();
-    void ChangeOnHightlightScale();
+    void ChangeOnNormalColor();
     void ChangeOnNormalScale();
-    void ChangeOnPathFindColor();
     void ChangeOnMazeStartPointColor();
     void ChangeOnMazeEndPointColor();
-    void ChangeOnHightlightColor();
 
-    float PathFindWeight { get; set; }
-    float PathFindDistanceHeuristic { get; set; }
-    IMazeElement PathFindParent { get; set; }
-    void ResetPathFindingParameters();
+    void DeleteMazeElement();
 }
 
-/*public interface IPathFindingParameters 
-{
-    void ResetPathFindingParameters();
-    IMazeElement PathFindParent { get; set; }
-    float PathFindWeight { get; set; }
-    float PathFindDistanceHeuristic { get; set; }
-    //IPathFindWeight PathFindWeight { get; set; }
-}*/
-
-public interface IPathFindWeight
-{
-    float Weight { get; set; }
-    void ResetPathFindingParameters();
-}
-public class MazeElementBoundary : MonoBehaviour, IMazeElement//, IPathFindingParameters
+public class MazeElementBoundary : MonoBehaviour, IMazeElement
 {
     Color hightlightColor;
     Color whiteColor;
@@ -47,8 +39,6 @@ public class MazeElementBoundary : MonoBehaviour, IMazeElement//, IPathFindingPa
     SpriteRenderer spriteRenderer;
 
     IPathFindingParameters pathFindingParameters;
-    //private IPathFindWeight MazeElementPathFindWeight { get; set; }
-
 
     public IMazeElement PathFindParent { get { return pathFindingParameters.PathFindParent; } set { pathFindingParameters.PathFindParent = value; } }
     public float PathFindWeight { get { return pathFindingParameters.Weight; } set { pathFindingParameters.Weight = value; } }
@@ -58,7 +48,7 @@ public class MazeElementBoundary : MonoBehaviour, IMazeElement//, IPathFindingPa
     public Vector2 Index { get; set; }
     public string Tag { get { return transform.tag; } set { transform.tag = value; } }
 
-    void Start ()
+    void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         hightlightColor = new Color32(152, 152, 152, 255);
@@ -89,7 +79,7 @@ public class MazeElementBoundary : MonoBehaviour, IMazeElement//, IPathFindingPa
                 GameMasterBoundary.instance.Mouse.CurrentMouseOnMazeElement = this;
             }
             else if (transform.tag == "PathFindStartNode" || transform.tag == "PathFindDestinationNode")
-            GameMasterBoundary.instance.Mouse.CurrentMouseOnMazeElement = this;
+                GameMasterBoundary.instance.Mouse.CurrentMouseOnMazeElement = this;
 
         }
     }
@@ -99,7 +89,7 @@ public class MazeElementBoundary : MonoBehaviour, IMazeElement//, IPathFindingPa
         {
             ChangeOnNormalColor();
             ChangeOnNormalScale();
-           // GameMasterBoundary.instance.Mouse.CurrentMouseOnMazeElement = null;
+            // GameMasterBoundary.instance.Mouse.CurrentMouseOnMazeElement = null;
         }
     }
 
@@ -131,7 +121,7 @@ public class MazeElementBoundary : MonoBehaviour, IMazeElement//, IPathFindingPa
         spriteRenderer.color = mazeEndPointColor;
     }
     public void ChangeOnHightlightColor()
-    { 
+    {
         spriteRenderer.color = hightlightColor;
     }
     public void ChangeOnPathFindColor()
@@ -139,7 +129,7 @@ public class MazeElementBoundary : MonoBehaviour, IMazeElement//, IPathFindingPa
         spriteRenderer.color = pathFindColor;
     }
     public void ChangeOnNormalColor()
-    { 
+    {
         spriteRenderer.color = whiteColor;
     }
     public void ChangeOnMazeWallColor()
@@ -153,6 +143,10 @@ public class MazeElementBoundary : MonoBehaviour, IMazeElement//, IPathFindingPa
     public void ChangeOnNormalScale()
     {
         transform.localScale = new Vector4(1f, 1f, 1f, 1f);
+    }
+    public void DeleteMazeElement()
+    {
+        DestroyImmediate(gameObject);
     }
 }
 

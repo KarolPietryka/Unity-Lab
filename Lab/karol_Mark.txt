@@ -1,0 +1,2 @@
+2 is player difficulty mark for maze with directory: karol_Mark.txt
+3 is player difficulty mark for maze with directory: karol_Mark.txt

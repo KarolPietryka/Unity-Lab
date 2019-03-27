@@ -1,0 +1,4 @@
+9 is player difficulty mark for maze with directory: C:\Users\PC\Desktop\Programy\Unity\5.Lab_21.11.2018\Lab\Assets\MazeDatabase/PlayerMarks/3_PlayerMark.txt
+9 is player difficulty mark for maze with directory: C:\Users\PC\Desktop\Programy\Unity\5.Lab_21.11.2018\Lab\Assets\MazeDatabase/PlayerMarks/3_PlayerMark.txt
+9 is player difficulty mark for maze with directory: C:\Users\PC\Desktop\Programy\Unity\5.Lab_21.11.2018\Lab\Assets\MazeDatabase/PlayerMarks/3_PlayerMark.txt
+0 is player difficulty mark for maze with directory: C:\Users\PC\Desktop\Programy\Unity\5.Lab_21.11.2018\Lab\Assets\MazeDatabase/PlayerMarks/4_PlayerMark.txt

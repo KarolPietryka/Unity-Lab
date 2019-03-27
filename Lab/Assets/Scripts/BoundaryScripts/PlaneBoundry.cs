@@ -23,7 +23,6 @@ public class PlaneBoundry : MonoBehaviour, IPlaneBuilder, IPlaneElementsBounds
             gamePlaneBound = value;
             GamePlaneSidesLenght = new Vector2(2 * GamePlaneBounds.extents.x, 2 * GamePlaneBounds.extents.y);
             if (GamePlaneSidesLenght.x <= 0 || GamePlaneSidesLenght.y <= 0) throw new System.ArgumentOutOfRangeException();
-
         }
     }
     public Bounds MazeElementBounds {
@@ -52,21 +51,18 @@ public class PlaneBoundry : MonoBehaviour, IPlaneBuilder, IPlaneElementsBounds
     {
         MazeElementBounds = MazeElementPrefab.GetComponent<SpriteRenderer>().bounds;
         GamePlaneBounds = new Bounds(transform.Find("Sprite").position, transform.Find("Sprite").GetComponent<SpriteRenderer>().bounds.size);
-          
+
         MazeElementAndGapSumOn = new Vector2(MazeElementSidesLenght.x + MazeElementGapBetween, MazeElementSidesLenght.y + MazeElementGapBetween);
 
-        //gamePlaneBuilder.SetInterfaces(this, this);
         gamePlaneBuilder = new PlaneBuilder(
             new FirstUpLeftMazeElementPositionProvider(this, this),
             new NumberOfMazeElementsInGamePlaneArea(this),
             this,
             this);
         CreateGamePlaneGridInScene();
-
-
     }
 
-    void CreateGamePlaneGridInScene()
+    public void CreateGamePlaneGridInScene()
     {
         gamePlaneBuilder.CreateGamePlaneGridInScene(); 
     }
@@ -94,4 +90,14 @@ public class PlaneBoundry : MonoBehaviour, IPlaneBuilder, IPlaneElementsBounds
         return gamePlaneBuilder.GetNeighboursOfMazeElement(mazeElement);
     }
 
+    public void GamePlaneSizeUpdate(Bounds newBound)
+    {
+        var currentGamePlaneSize = gamePlaneBound.size;
+        var newBoundSize = newBound.size;
+        var scale = new Vector3(newBoundSize.x / currentGamePlaneSize.x, newBoundSize.y / currentGamePlaneSize.y, newBoundSize.z / currentGamePlaneSize.z);
+
+        transform.Find("Sprite").localScale = new Vector3(transform.Find("Sprite").localScale.x * scale.x, transform.Find("Sprite").localScale.y * scale.y, transform.Find("Sprite").localScale.z * scale.z);
+
+        GamePlaneBounds = newBound;
+    }
 }

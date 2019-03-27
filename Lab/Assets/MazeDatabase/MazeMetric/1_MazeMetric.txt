@@ -1,0 +1,7 @@
+10 is TotalNumberOfNodes
+10 is TotalNumberOfWalkableNodes
+10 is TotalNumberOfJunctions
+0 is TotalNumberOfThreeWayJunctions
+10 is TotalNumberOfFourWayJunctions
+0 is TotalNumberOfDeadEnds
+0 is TotalNumberOfHallwayNodes

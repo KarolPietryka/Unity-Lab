@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BuildingController : IBuildingController {
+public class BuildingController {//: IBuildingController { TODO to del?
 
-    public IMazeElement[] NextPossibleMazeElementsToProcess { get; set; }
+    /*public IMazeElement[] NextPossibleMazeElementsToProcess { get; set; }
    // public bool InBuildingProcesss { get; set; }
     public BuildingStatus BuildingStatus { get; set; }
     public Direction BuildingDirection { get; set; }
@@ -87,5 +87,5 @@ public class BuildingController : IBuildingController {
         nextPossibleMazeElementsToProcessIndexes[1] = NextPossibleMazeElementsToProcess[1].Index;
 
         return nextPossibleMazeElementsToProcessIndexes;
-    }
+    }*/
 }
