@@ -1,0 +1,10 @@
+450 is NumberOfVisitedNodes
+103 is NumberOfVisitedJunctions
+98 is NumberOfVisitedThreeWayJunctions
+5 is NumberOfVisitedFourWayJunctions
+45 is NumberOfVisitedDeadEnds
+301 is NumberOfVisitedHallwayNodes
+98 is PathLengthExpressedInNumberOfNodes
+
+Analytic Format: 
+450 | 98 | 103 | 98 | 5 | 45 | 301

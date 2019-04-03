@@ -1,0 +1,10 @@
+324 is TotalNumberOfNodes
+142 is TotalNumberOfWalkableNodes
+19 is TotalNumberOfJunctions
+19 is TotalNumberOfThreeWayJunctions
+0 is TotalNumberOfFourWayJunctions
+19 is TotalNumberOfDeadEnds
+104 is TotalNumberOfHallwayNodes
+
+Analytic Format: 
+324 | 142 | 19 | 19 | 0 | 19 | 104

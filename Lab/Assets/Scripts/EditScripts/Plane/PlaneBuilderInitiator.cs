@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class PlaneBuilderInitiator{
+public abstract class PlaneBuilderInitiator{ //TODO Del?
 
     protected IFirstUpLeftMazeElementPositionProvider firstUpLeftMazeElementPositionProvider;
     protected INumberOfMazeElementsInGamePlaneArea numberOfMazeElementsInGamePlaneArea;

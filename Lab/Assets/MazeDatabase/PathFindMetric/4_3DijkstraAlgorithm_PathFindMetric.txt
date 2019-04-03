@@ -1,0 +1,10 @@
+93 is NumberOfVisitedNodes
+18 is NumberOfVisitedJunctions
+17 is NumberOfVisitedThreeWayJunctions
+1 is NumberOfVisitedFourWayJunctions
+10 is NumberOfVisitedDeadEnds
+64 is NumberOfVisitedHallwayNodes
+33 is PathLengthExpressedInNumberOfNodes
+
+Analytic Format: 
+93 | 33 | 18 | 17 | 1 | 10 | 64

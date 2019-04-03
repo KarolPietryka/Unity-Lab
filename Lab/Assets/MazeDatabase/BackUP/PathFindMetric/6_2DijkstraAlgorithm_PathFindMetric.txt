@@ -1,0 +1,10 @@
+255 is NumberOfVisitedNodes
+47 is NumberOfVisitedJunctions
+45 is NumberOfVisitedThreeWayJunctions
+2 is NumberOfVisitedFourWayJunctions
+35 is NumberOfVisitedDeadEnds
+172 is NumberOfVisitedHallwayNodes
+86 is PathLengthExpressedInNumberOfNodes
+
+Analytic Format: 
+255 | 86 | 47 | 45 | 2 | 35 | 172

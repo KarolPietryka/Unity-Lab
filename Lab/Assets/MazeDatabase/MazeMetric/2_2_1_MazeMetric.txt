@@ -1,0 +1,10 @@
+121 is TotalNumberOfNodes
+48 is TotalNumberOfWalkableNodes
+8 is TotalNumberOfJunctions
+8 is TotalNumberOfThreeWayJunctions
+0 is TotalNumberOfFourWayJunctions
+10 is TotalNumberOfDeadEnds
+30 is TotalNumberOfHallwayNodes
+
+Analytic Format: 
+121 | 48 | 8 | 8 | 0 | 10 | 30

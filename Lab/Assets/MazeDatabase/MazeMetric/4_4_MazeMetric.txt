@@ -1,0 +1,10 @@
+361 is TotalNumberOfNodes
+160 is TotalNumberOfWalkableNodes
+21 is TotalNumberOfJunctions
+20 is TotalNumberOfThreeWayJunctions
+1 is TotalNumberOfFourWayJunctions
+20 is TotalNumberOfDeadEnds
+119 is TotalNumberOfHallwayNodes
+
+Analytic Format: 
+361 | 160 | 21 | 20 | 1 | 20 | 119

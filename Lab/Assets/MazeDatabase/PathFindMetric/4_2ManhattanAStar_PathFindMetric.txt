@@ -1,0 +1,10 @@
+56 is NumberOfVisitedNodes
+10 is NumberOfVisitedJunctions
+9 is NumberOfVisitedThreeWayJunctions
+1 is NumberOfVisitedFourWayJunctions
+6 is NumberOfVisitedDeadEnds
+39 is NumberOfVisitedHallwayNodes
+26 is PathLengthExpressedInNumberOfNodes
+
+Analytic Format: 
+56 | 26 | 10 | 9 | 1 | 6 | 39

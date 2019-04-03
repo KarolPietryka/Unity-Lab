@@ -1,0 +1,10 @@
+499 is NumberOfVisitedNodes
+101 is NumberOfVisitedJunctions
+97 is NumberOfVisitedThreeWayJunctions
+4 is NumberOfVisitedFourWayJunctions
+68 is NumberOfVisitedDeadEnds
+329 is NumberOfVisitedHallwayNodes
+118 is PathLengthExpressedInNumberOfNodes
+
+Analytic Format: 
+499 | 118 | 101 | 97 | 4 | 68 | 329

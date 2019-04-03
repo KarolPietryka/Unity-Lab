@@ -1,7 +1,10 @@
-10 is NumberOfVisitedNodes
-9 is NumberOfVisitedJunctions
+8 is NumberOfVisitedNodes
+0 is NumberOfVisitedJunctions
 0 is NumberOfVisitedThreeWayJunctions
-9 is NumberOfVisitedFourWayJunctions
-0 is NumberOfVisitedDeadEnds
-0 is NumberOfVisitedHallwayNodes
-9 is PathLengthExpressedInNumberOfNodes
+0 is NumberOfVisitedFourWayJunctions
+1 is NumberOfVisitedDeadEnds
+6 is NumberOfVisitedHallwayNodes
+7 is PathLengthExpressedInNumberOfNodes
+
+Analytic Format: 
+8 | 7 | 0 | 0 | 0 | 1 | 6

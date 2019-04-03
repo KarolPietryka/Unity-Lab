@@ -1,0 +1,10 @@
+447 is NumberOfVisitedNodes
+94 is NumberOfVisitedJunctions
+89 is NumberOfVisitedThreeWayJunctions
+5 is NumberOfVisitedFourWayJunctions
+63 is NumberOfVisitedDeadEnds
+289 is NumberOfVisitedHallwayNodes
+109 is PathLengthExpressedInNumberOfNodes
+
+Analytic Format: 
+447 | 109 | 94 | 89 | 5 | 63 | 289

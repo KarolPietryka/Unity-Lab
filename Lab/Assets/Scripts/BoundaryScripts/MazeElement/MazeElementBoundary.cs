@@ -55,8 +55,8 @@ public class MazeElementBoundary : MonoBehaviour, IMazeElement
         whiteColor = new Color(1, 1, 1, 1);
         mazeWallColor = new Color(0, 0, 0, 1);
         pathFindColor = new Color32(97, 227, 152, 180);
-        mazeStartPointColor = new Color32(85, 197, 234, 230);
-        mazeEndPointColor = new Color32(251, 170, 182, 230);
+        mazeStartPointColor = new Color32(154, 154, 154, 230);//new Color32(85, 197, 234, 230);
+        mazeEndPointColor = new Color32(154, 154, 154, 230);//new Color32(251, 170, 182, 230);
 
         pathFindingParameters = new PathFindParameters();
     }

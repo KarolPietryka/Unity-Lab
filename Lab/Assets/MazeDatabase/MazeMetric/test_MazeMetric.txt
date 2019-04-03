@@ -1,7 +1,0 @@
-625 is TotalNumberOfNodes
-589 is TotalNumberOfWalkableNodes
-585 is TotalNumberOfJunctions
-64 is TotalNumberOfThreeWayJunctions
-521 is TotalNumberOfFourWayJunctions
-0 is TotalNumberOfDeadEnds
-4 is TotalNumberOfHallwayNodes

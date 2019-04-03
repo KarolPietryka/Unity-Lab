@@ -1,0 +1,10 @@
+1162 is NumberOfVisitedNodes
+169 is NumberOfVisitedJunctions
+160 is NumberOfVisitedThreeWayJunctions
+9 is NumberOfVisitedFourWayJunctions
+137 is NumberOfVisitedDeadEnds
+855 is NumberOfVisitedHallwayNodes
+401 is PathLengthExpressedInNumberOfNodes
+
+Analytic Format: 
+1162 | 401 | 169 | 160 | 9 | 137 | 855

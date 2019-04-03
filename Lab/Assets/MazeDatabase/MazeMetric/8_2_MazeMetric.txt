@@ -1,0 +1,10 @@
+1936 is TotalNumberOfNodes
+950 is TotalNumberOfWalkableNodes
+193 is TotalNumberOfJunctions
+179 is TotalNumberOfThreeWayJunctions
+14 is TotalNumberOfFourWayJunctions
+113 is TotalNumberOfDeadEnds
+644 is TotalNumberOfHallwayNodes
+
+Analytic Format: 
+1936 | 950 | 193 | 179 | 14 | 113 | 644

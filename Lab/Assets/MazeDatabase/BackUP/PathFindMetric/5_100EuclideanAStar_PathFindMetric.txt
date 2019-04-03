@@ -1,0 +1,10 @@
+700 is NumberOfVisitedNodes
+153 is NumberOfVisitedJunctions
+143 is NumberOfVisitedThreeWayJunctions
+10 is NumberOfVisitedFourWayJunctions
+72 is NumberOfVisitedDeadEnds
+474 is NumberOfVisitedHallwayNodes
+140 is PathLengthExpressedInNumberOfNodes
+
+Analytic Format: 
+700 | 140 | 153 | 143 | 10 | 72 | 474

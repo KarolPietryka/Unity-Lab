@@ -1,0 +1,10 @@
+645 is NumberOfVisitedNodes
+139 is NumberOfVisitedJunctions
+129 is NumberOfVisitedThreeWayJunctions
+10 is NumberOfVisitedFourWayJunctions
+67 is NumberOfVisitedDeadEnds
+438 is NumberOfVisitedHallwayNodes
+112 is PathLengthExpressedInNumberOfNodes
+
+Analytic Format: 
+645 | 112 | 139 | 129 | 10 | 67 | 438

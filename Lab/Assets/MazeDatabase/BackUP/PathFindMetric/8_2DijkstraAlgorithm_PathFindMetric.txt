@@ -1,0 +1,10 @@
+847 is NumberOfVisitedNodes
+176 is NumberOfVisitedJunctions
+162 is NumberOfVisitedThreeWayJunctions
+14 is NumberOfVisitedFourWayJunctions
+94 is NumberOfVisitedDeadEnds
+576 is NumberOfVisitedHallwayNodes
+112 is PathLengthExpressedInNumberOfNodes
+
+Analytic Format: 
+847 | 112 | 176 | 162 | 14 | 94 | 576

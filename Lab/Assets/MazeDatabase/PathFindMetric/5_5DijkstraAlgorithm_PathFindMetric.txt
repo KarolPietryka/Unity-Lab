@@ -1,0 +1,10 @@
+132 is NumberOfVisitedNodes
+19 is NumberOfVisitedJunctions
+18 is NumberOfVisitedThreeWayJunctions
+1 is NumberOfVisitedFourWayJunctions
+17 is NumberOfVisitedDeadEnds
+95 is NumberOfVisitedHallwayNodes
+68 is PathLengthExpressedInNumberOfNodes
+
+Analytic Format: 
+132 | 68 | 19 | 18 | 1 | 17 | 95

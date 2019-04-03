@@ -1,0 +1,10 @@
+961 is TotalNumberOfNodes
+472 is TotalNumberOfWalkableNodes
+104 is TotalNumberOfJunctions
+99 is TotalNumberOfThreeWayJunctions
+5 is TotalNumberOfFourWayJunctions
+51 is TotalNumberOfDeadEnds
+317 is TotalNumberOfHallwayNodes
+
+Analytic Format: 
+961 | 472 | 104 | 99 | 5 | 51 | 317

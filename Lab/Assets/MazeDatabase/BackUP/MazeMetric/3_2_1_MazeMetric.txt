@@ -1,0 +1,10 @@
+144 is TotalNumberOfNodes
+64 is TotalNumberOfWalkableNodes
+16 is TotalNumberOfJunctions
+16 is TotalNumberOfThreeWayJunctions
+0 is TotalNumberOfFourWayJunctions
+6 is TotalNumberOfDeadEnds
+42 is TotalNumberOfHallwayNodes
+
+Analytic Format: 
+144 | 64 | 16 | 16 | 0 | 6 | 42

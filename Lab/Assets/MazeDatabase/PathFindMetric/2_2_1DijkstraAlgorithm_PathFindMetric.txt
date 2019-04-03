@@ -1,0 +1,10 @@
+43 is NumberOfVisitedNodes
+8 is NumberOfVisitedJunctions
+8 is NumberOfVisitedThreeWayJunctions
+0 is NumberOfVisitedFourWayJunctions
+7 is NumberOfVisitedDeadEnds
+27 is NumberOfVisitedHallwayNodes
+20 is PathLengthExpressedInNumberOfNodes
+
+Analytic Format: 
+43 | 20 | 8 | 8 | 0 | 7 | 27

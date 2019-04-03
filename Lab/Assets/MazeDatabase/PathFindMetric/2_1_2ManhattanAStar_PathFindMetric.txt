@@ -1,0 +1,10 @@
+28 is NumberOfVisitedNodes
+4 is NumberOfVisitedJunctions
+4 is NumberOfVisitedThreeWayJunctions
+0 is NumberOfVisitedFourWayJunctions
+1 is NumberOfVisitedDeadEnds
+22 is NumberOfVisitedHallwayNodes
+14 is PathLengthExpressedInNumberOfNodes
+
+Analytic Format: 
+28 | 14 | 4 | 4 | 0 | 1 | 22

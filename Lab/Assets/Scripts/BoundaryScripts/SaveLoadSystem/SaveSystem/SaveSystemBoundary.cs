@@ -23,18 +23,6 @@ public class SaveSystemBoundary : MonoBehaviour, IMazeSpecialElementsSeeker
         string mazeSaveFolderPath = SaveFolderPathFromInputField.GetComponent<InputField>().text;
 
         Debug.Log(mazeSaveFolderPath);
-        /*saveSystem = new SaveSystem(
-            new FolderPath(
-                mazeSaveFolderPath,
-                defaultSaveFolderPath,
-                new PathValidator()),
-            new MazeSaveTextCreator(
-                planeBuilder,
-                planeBuilder,
-                new List<string>(),
-                this),
-            new List<string>(),
-            new StreamWriter(mazeSaveFolderPath, false));*/
 
         saveSystem = new SaveSystemFactory().CreateSaveSystemForMazeSaving(defaultSaveFolderPath,
             planeBuilder,
@@ -49,17 +37,6 @@ public class SaveSystemBoundary : MonoBehaviour, IMazeSpecialElementsSeeker
         string currentMazeDirectory = transform.GetComponent<LoadSystemBoundary>().GetCurrentMazeDirectionFolder() + "/PlayerMarks/" + transform.GetComponent<LoadSystemBoundary>().GetCurrentMazeNameWithoutExtensions()+ "_PlayerMark.txt";
 
         Debug.Log(currentMazeDirectory);
-        /*saveSystem = new SaveSystem(
-            new FolderPath(
-                currentMazeDirectory,
-                defaultSaveFolderPath,
-                new PathValidator()),
-            new MarkSaveTextCreator(
-                markingDropdownList.value,                
-                new List<string>(),
-                currentMazeDirectory),
-            new List<string>(),
-            new StreamWriter(currentMazeDirectory, true));*/
 
         saveSystem = new SaveSystemFactory().CreateSaveSystemForMazeMark(
             currentMazeDirectory,
@@ -74,17 +51,6 @@ public class SaveSystemBoundary : MonoBehaviour, IMazeSpecialElementsSeeker
     {
         string currentMazeDirectory = transform.GetComponent<LoadSystemBoundary>().GetCurrentMazeDirectionFolder() + "/PathFindMetric/" + transform.GetComponent<LoadSystemBoundary>().GetCurrentMazeNameWithoutExtensions() + pathFindAlgorithms.ToString() + "_PathFindMetric.txt";
 
-        /*saveSystem = new SaveSystem(
-            new FolderPath(
-                currentMazeDirectory,
-                defaultSaveFolderPath,
-                new PathValidator()),
-            new PathFindProcessMetricSaveTextCreator(
-                pathFindProcessMetric,
-                new List<string>()),
-            new List<string>(),
-            new StreamWriter(currentMazeDirectory, false));*/
-
         saveSystem = new SaveSystemFactory().CreateSaveSystemForPathFindProcessMetric(
             currentMazeDirectory,
             defaultSaveFolderPath,
@@ -97,19 +63,6 @@ public class SaveSystemBoundary : MonoBehaviour, IMazeSpecialElementsSeeker
     public void SaveMazeMetric(IMazeMetricCollector mazeMetricCollector)
     {
         string currentMazeDirectory = transform.GetComponent<LoadSystemBoundary>().GetCurrentMazeDirectionFolder() + "/MazeMetric/" + transform.GetComponent<LoadSystemBoundary>().GetCurrentMazeNameWithoutExtensions() + "_MazeMetric.txt";
-
-        Debug.Log(transform.GetComponent<LoadSystemBoundary>().GetCurrentMazeDirectionFolder());
-        Debug.Log(transform.GetComponent<LoadSystemBoundary>().GetCurrentMazeNameWithoutExtensions());
-        /*saveSystem = new SaveSystem(
-            new FolderPath(
-                currentMazeDirectory,
-                defaultSaveFolderPath,
-                new PathValidator()),
-            new MazeMetricSaveTextCreator(
-                mazeMetricCollector,
-                new List<string>()),
-            new List<string>(),
-            new StreamWriter(currentMazeDirectory, false));*/
 
         saveSystem = new SaveSystemFactory().CreateSaveSystemForMazeMetric(
             currentMazeDirectory,
