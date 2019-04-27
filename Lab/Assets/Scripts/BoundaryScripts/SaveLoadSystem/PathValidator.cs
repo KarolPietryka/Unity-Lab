@@ -11,6 +11,7 @@ public class PathValidator : IPathValidator {
 
     public void SetDefaultIfFolderPathEmpty(ref string folderPath, string defauldFolderPath)
     {
+        Debug.Log(defauldFolderPath);
         if (IsFolderPathEmpty(folderPath, defauldFolderPath))
         {
             folderPath = defauldFolderPath;

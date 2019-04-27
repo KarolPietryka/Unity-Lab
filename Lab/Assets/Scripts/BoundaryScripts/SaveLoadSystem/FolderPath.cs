@@ -4,7 +4,7 @@ using UnityEngine;
 
 public interface IFolderPath
 {
-    void FolderPathValidation();
+    string GetValidatedFolderPath();
 }
 
 public class FolderPath : IFolderPath{
@@ -17,12 +17,15 @@ public class FolderPath : IFolderPath{
     {
         saveFolderpath = _folderPath;
         saveFolderPathValidator = _saveFolderPathValidator;
+        defauldFolderPath = _defauldFolderPath;
     }
 
-    public void FolderPathValidation()
+    public string GetValidatedFolderPath()
     {
         saveFolderPathValidator.SetDefaultIfFolderPathEmpty(ref saveFolderpath, defauldFolderPath);
+        return saveFolderpath + "/testc.txt";
     }
+
 
 
 }

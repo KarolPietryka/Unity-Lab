@@ -1,0 +1,10 @@
+225 is NumberOfVisitedNodes
+36 is NumberOfVisitedJunctions
+34 is NumberOfVisitedThreeWayJunctions
+2 is NumberOfVisitedFourWayJunctions
+29 is NumberOfVisitedDeadEnds
+159 is NumberOfVisitedHallwayNodes
+105 is PathLengthExpressedInNumberOfNodes
+
+Analytic Format: 
+225 | 105 | 36 | 34 | 2 | 29 | 159

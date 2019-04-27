@@ -1,0 +1,10 @@
+625 is TotalNumberOfNodes
+298 is TotalNumberOfWalkableNodes
+64 is TotalNumberOfJunctions
+60 is TotalNumberOfThreeWayJunctions
+4 is TotalNumberOfFourWayJunctions
+30 is TotalNumberOfDeadEnds
+204 is TotalNumberOfHallwayNodes
+
+Analytic Format: 
+625 | 298 | 64 | 60 | 4 | 30 | 204

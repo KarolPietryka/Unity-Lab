@@ -1,0 +1,10 @@
+306 is NumberOfVisitedNodes
+51 is NumberOfVisitedJunctions
+46 is NumberOfVisitedThreeWayJunctions
+5 is NumberOfVisitedFourWayJunctions
+43 is NumberOfVisitedDeadEnds
+211 is NumberOfVisitedHallwayNodes
+90 is PathLengthExpressedInNumberOfNodes
+
+Analytic Format: 
+306 | 90 | 51 | 46 | 5 | 43 | 211

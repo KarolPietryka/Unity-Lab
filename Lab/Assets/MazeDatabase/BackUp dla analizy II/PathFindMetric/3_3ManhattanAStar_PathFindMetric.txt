@@ -1,0 +1,10 @@
+57 is NumberOfVisitedNodes
+11 is NumberOfVisitedJunctions
+11 is NumberOfVisitedThreeWayJunctions
+0 is NumberOfVisitedFourWayJunctions
+7 is NumberOfVisitedDeadEnds
+38 is NumberOfVisitedHallwayNodes
+33 is PathLengthExpressedInNumberOfNodes
+
+Analytic Format: 
+57 | 33 | 11 | 11 | 0 | 7 | 38

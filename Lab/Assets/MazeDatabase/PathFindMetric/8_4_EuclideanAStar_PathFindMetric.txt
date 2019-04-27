@@ -1,0 +1,10 @@
+401 is NumberOfVisitedNodes
+80 is NumberOfVisitedJunctions
+76 is NumberOfVisitedThreeWayJunctions
+4 is NumberOfVisitedFourWayJunctions
+50 is NumberOfVisitedDeadEnds
+270 is NumberOfVisitedHallwayNodes
+118 is PathLengthExpressedInNumberOfNodes
+
+Analytic Format: 
+401 | 118 | 80 | 76 | 4 | 50 | 270

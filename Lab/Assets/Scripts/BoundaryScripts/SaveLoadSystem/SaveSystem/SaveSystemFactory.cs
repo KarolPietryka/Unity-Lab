@@ -81,18 +81,22 @@ public class SaveSystemFactory{
     }
 
     public ISaveSystem CreateSaveSystemForMazeMetric(
-         string currentMazeDirectory,
+        string currentMazeDirectory,
         string defaultSaveFolderPath,
         IMazeMetricCollector mazeMetricCollector)
     {
         ISaveSystem saveSystem;
         List<string> saveText = new List<string>();
 
-        saveSystem = new SaveSystem(
-            new FolderPath(
+        FolderPath folderPath = new FolderPath(
                 currentMazeDirectory,
                 defaultSaveFolderPath,
-                new PathValidator()),
+                new PathValidator());
+
+        currentMazeDirectory = folderPath.GetValidatedFolderPath();
+
+        saveSystem = new SaveSystem(
+            folderPath,
             new MazeMetricSaveTextCreator(
                 mazeMetricCollector,
                 saveText,

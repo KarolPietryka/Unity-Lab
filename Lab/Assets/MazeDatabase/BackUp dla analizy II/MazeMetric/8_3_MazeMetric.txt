@@ -1,0 +1,10 @@
+1521 is TotalNumberOfNodes
+726 is TotalNumberOfWalkableNodes
+124 is TotalNumberOfJunctions
+121 is TotalNumberOfThreeWayJunctions
+3 is TotalNumberOfFourWayJunctions
+85 is TotalNumberOfDeadEnds
+517 is TotalNumberOfHallwayNodes
+
+Analytic Format: 
+1521 | 726 | 124 | 121 | 3 | 85 | 517

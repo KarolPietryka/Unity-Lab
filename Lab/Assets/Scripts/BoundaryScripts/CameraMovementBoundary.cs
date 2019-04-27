@@ -53,8 +53,6 @@ public class CameraMovementBoundary : MonoBehaviour, ITimeProvider, IElementsBou
 
     void Start()
     {
-
-
         ScreenWidth = Screen.width;
         ScreenHeight = Screen.height;
         GamePlaneBounds = GameObject.Find("Plane").GetComponent<PlaneBoundry>().GamePlaneBounds;

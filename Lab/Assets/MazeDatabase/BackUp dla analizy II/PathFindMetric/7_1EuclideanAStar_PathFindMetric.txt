@@ -1,0 +1,10 @@
+461 is NumberOfVisitedNodes
+104 is NumberOfVisitedJunctions
+99 is NumberOfVisitedThreeWayJunctions
+5 is NumberOfVisitedFourWayJunctions
+48 is NumberOfVisitedDeadEnds
+308 is NumberOfVisitedHallwayNodes
+98 is PathLengthExpressedInNumberOfNodes
+
+Analytic Format: 
+461 | 98 | 104 | 99 | 5 | 48 | 308

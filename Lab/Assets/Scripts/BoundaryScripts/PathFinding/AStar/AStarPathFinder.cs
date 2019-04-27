@@ -36,6 +36,7 @@ public class AStarPathFinder : IPathFinder
         {
             IMazeElement currentMazeElement = openCloseListController.GetMazeElementWithLowestWeight();
 
+            Debug.Log(currentMazeElement.Index);
             openCloseListController.RemoveFirstElementFromOpenList(currentMazeElement);
             openCloseListController.AddToCloseList(currentMazeElement);
 

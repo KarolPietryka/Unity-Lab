@@ -1,0 +1,10 @@
+2500 is TotalNumberOfNodes
+2432 is TotalNumberOfWalkableNodes
+2398 is TotalNumberOfJunctions
+63 is TotalNumberOfThreeWayJunctions
+2335 is TotalNumberOfFourWayJunctions
+5 is TotalNumberOfDeadEnds
+29 is TotalNumberOfHallwayNodes
+
+Analytic Format: 
+2500 | 2432 | 2398 | 63 | 2335 | 5 | 29

@@ -1,0 +1,10 @@
+90 is NumberOfVisitedNodes
+14 is NumberOfVisitedJunctions
+13 is NumberOfVisitedThreeWayJunctions
+1 is NumberOfVisitedFourWayJunctions
+10 is NumberOfVisitedDeadEnds
+65 is NumberOfVisitedHallwayNodes
+29 is PathLengthExpressedInNumberOfNodes
+
+Analytic Format: 
+90 | 29 | 14 | 13 | 1 | 10 | 65

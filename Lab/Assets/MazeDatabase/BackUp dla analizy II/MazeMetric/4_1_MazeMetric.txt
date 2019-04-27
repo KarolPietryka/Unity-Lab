@@ -1,0 +1,10 @@
+196 is TotalNumberOfNodes
+84 is TotalNumberOfWalkableNodes
+13 is TotalNumberOfJunctions
+12 is TotalNumberOfThreeWayJunctions
+1 is TotalNumberOfFourWayJunctions
+8 is TotalNumberOfDeadEnds
+63 is TotalNumberOfHallwayNodes
+
+Analytic Format: 
+196 | 84 | 13 | 12 | 1 | 8 | 63

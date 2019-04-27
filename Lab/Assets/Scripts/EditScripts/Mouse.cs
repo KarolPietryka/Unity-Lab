@@ -42,19 +42,6 @@ public class Mouse : IMouseLogic
         return Camera.main.ScreenToWorldPoint(mouseInputPosition);
     }
 
-    /*public bool InGamePlaneArea()
-    {
-        Vector3 mousePositionInWorldSpace = GetMousePositionInWorldSpace();
-
-        Bounds gamePlaneBounds = new Bounds(gamePlaneCenter, new Vector3(instantiantionAreaSideX, instantiantionAreaSideY, mouseupperScrollLimit));
-
-        if (gamePlaneBounds.Contains(mousePositionInWorldSpace))
-        {
-            return true;
-        }
-        return false;
-    }*/
-
 }
 
 

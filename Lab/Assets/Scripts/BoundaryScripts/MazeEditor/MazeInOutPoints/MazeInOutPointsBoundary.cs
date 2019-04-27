@@ -2,6 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public interface IMazeInOutPoints
+{
+    void SetInOutPoints();
+    void SetInOutPointsAt(IMazeElement inPoint, IMazeElement outPoint);
+    void RemoveInOutPoints();
+}
+
 public class MazeInOutPointsBoundary : MonoBehaviour, IInputMouseButtons, IMazeInOutPoints
 {
     private IMouse mouseBoundary;

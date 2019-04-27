@@ -1,0 +1,10 @@
+455 is NumberOfVisitedNodes
+80 is NumberOfVisitedJunctions
+76 is NumberOfVisitedThreeWayJunctions
+4 is NumberOfVisitedFourWayJunctions
+49 is NumberOfVisitedDeadEnds
+325 is NumberOfVisitedHallwayNodes
+123 is PathLengthExpressedInNumberOfNodes
+
+Analytic Format: 
+455 | 123 | 80 | 76 | 4 | 49 | 325

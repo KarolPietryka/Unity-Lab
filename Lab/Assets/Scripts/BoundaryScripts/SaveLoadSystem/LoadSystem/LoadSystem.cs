@@ -24,5 +24,4 @@ public class LoadSystem : ILoadSystem {
     {
         gamePlaneLoader.BuildMazeWalls(saveTextNumberFromList);
     }
-
 }

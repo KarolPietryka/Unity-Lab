@@ -15,9 +15,7 @@ public interface IMouse : IMouseMovementInReferenceToLastClick
     Vector2 GetLastMouseClickMazeElementIndex();
     bool GetLastMouseClickMazeElementIsMazeElement();
     bool GetCurrentMouseOnMazeElementIsMazeElement();
-    //Vector2 farthestMazeElementFromLastMouseClickMazeElement { get; set; }
 
-    //void UpdateLastMouseClickPosition(Vector3 newLastMouseClickPosition);
     Vector3 LastMouseClickPosition { get; set; }
     Vector3 GetMousePosition();
     float GetMouseScrollWheel();
@@ -31,7 +29,6 @@ public class MouseBoundry : MonoBehaviour, IMouse{
     public Vector3 LastMouseClickPosition { get; set; }
     public MazeElementBoundary CurrentMouseOnMazeElement { get; set; }
     public MazeElementBoundary LastMouseClickMazeElement { get; set; }
-    //public Vector2 farthestMazeElementFromLastMouseClickMazeElement { get; set; }
 
     private void Awake()
     {
@@ -85,5 +82,4 @@ public class MouseBoundry : MonoBehaviour, IMouse{
     {
         return CurrentMouseOnMazeElement.IsMazeWall;
     }
-
 }

@@ -1,0 +1,10 @@
+537 is NumberOfVisitedNodes
+97 is NumberOfVisitedJunctions
+93 is NumberOfVisitedThreeWayJunctions
+4 is NumberOfVisitedFourWayJunctions
+65 is NumberOfVisitedDeadEnds
+374 is NumberOfVisitedHallwayNodes
+123 is PathLengthExpressedInNumberOfNodes
+
+Analytic Format: 
+537 | 123 | 97 | 93 | 4 | 65 | 374

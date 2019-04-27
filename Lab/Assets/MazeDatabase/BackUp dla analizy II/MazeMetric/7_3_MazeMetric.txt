@@ -1,0 +1,10 @@
+1024 is TotalNumberOfNodes
+476 is TotalNumberOfWalkableNodes
+70 is TotalNumberOfJunctions
+65 is TotalNumberOfThreeWayJunctions
+5 is TotalNumberOfFourWayJunctions
+57 is TotalNumberOfDeadEnds
+349 is TotalNumberOfHallwayNodes
+
+Analytic Format: 
+1024 | 476 | 70 | 65 | 5 | 57 | 349

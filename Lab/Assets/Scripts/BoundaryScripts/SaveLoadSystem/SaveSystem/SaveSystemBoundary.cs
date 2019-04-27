@@ -22,8 +22,6 @@ public class SaveSystemBoundary : MonoBehaviour, IMazeSpecialElementsSeeker
     {
         string mazeSaveFolderPath = SaveFolderPathFromInputField.GetComponent<InputField>().text;
 
-        Debug.Log(mazeSaveFolderPath);
-
         saveSystem = new SaveSystemFactory().CreateSaveSystemForMazeSaving(defaultSaveFolderPath,
             planeBuilder,
             mazeSaveFolderPath,
@@ -34,7 +32,15 @@ public class SaveSystemBoundary : MonoBehaviour, IMazeSpecialElementsSeeker
 
     public void SaveMarkForCurrentMaze()
     {
-        string currentMazeDirectory = transform.GetComponent<LoadSystemBoundary>().GetCurrentMazeDirectionFolder() + "/PlayerMarks/" + transform.GetComponent<LoadSystemBoundary>().GetCurrentMazeNameWithoutExtensions()+ "_PlayerMark.txt";
+        string currentMazeDirectory;
+        try
+        {
+            currentMazeDirectory = transform.GetComponent<LoadSystemBoundary>().GetCurrentMazeDirectionFolder() + "/PlayerMarks/" + transform.GetComponent<LoadSystemBoundary>().GetCurrentMazeNameWithoutExtensions() + "_PlayerMark.txt";
+        }
+        catch (System.IndexOutOfRangeException)
+        {
+            currentMazeDirectory = string.Empty;
+        }
 
         Debug.Log(currentMazeDirectory);
 
@@ -49,7 +55,15 @@ public class SaveSystemBoundary : MonoBehaviour, IMazeSpecialElementsSeeker
 
     public void SaveMetricForPathFindProcess(IPathFindProcessMetricCollector pathFindProcessMetric, EPathFindAlgorithms pathFindAlgorithms)
     {
-        string currentMazeDirectory = transform.GetComponent<LoadSystemBoundary>().GetCurrentMazeDirectionFolder() + "/PathFindMetric/" + transform.GetComponent<LoadSystemBoundary>().GetCurrentMazeNameWithoutExtensions() + pathFindAlgorithms.ToString() + "_PathFindMetric.txt";
+        string currentMazeDirectory;
+        try
+        {
+            currentMazeDirectory = transform.GetComponent<LoadSystemBoundary>().GetCurrentMazeDirectionFolder() + "/PathFindMetric/" + transform.GetComponent<LoadSystemBoundary>().GetCurrentMazeNameWithoutExtensions() + "_" + pathFindAlgorithms.ToString() + "_PathFindMetric.txt";
+        }
+        catch (System.IndexOutOfRangeException)
+        {
+            currentMazeDirectory = string.Empty;
+        }
 
         saveSystem = new SaveSystemFactory().CreateSaveSystemForPathFindProcessMetric(
             currentMazeDirectory,
@@ -62,7 +76,15 @@ public class SaveSystemBoundary : MonoBehaviour, IMazeSpecialElementsSeeker
 
     public void SaveMazeMetric(IMazeMetricCollector mazeMetricCollector)
     {
-        string currentMazeDirectory = transform.GetComponent<LoadSystemBoundary>().GetCurrentMazeDirectionFolder() + "/MazeMetric/" + transform.GetComponent<LoadSystemBoundary>().GetCurrentMazeNameWithoutExtensions() + "_MazeMetric.txt";
+        string currentMazeDirectory;
+        try
+        {
+           currentMazeDirectory = transform.GetComponent<LoadSystemBoundary>().GetCurrentMazeDirectionFolder() + "/MazeMetric/" + transform.GetComponent<LoadSystemBoundary>().GetCurrentMazeNameWithoutExtensions() + "_MazeMetric.txt";
+        }
+        catch (System.IndexOutOfRangeException)
+        {
+            currentMazeDirectory = string.Empty;
+        }
 
         saveSystem = new SaveSystemFactory().CreateSaveSystemForMazeMetric(
             currentMazeDirectory,

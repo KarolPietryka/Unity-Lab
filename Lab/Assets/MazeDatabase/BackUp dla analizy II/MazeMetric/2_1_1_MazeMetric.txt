@@ -1,0 +1,10 @@
+100 is TotalNumberOfNodes
+40 is TotalNumberOfWalkableNodes
+11 is TotalNumberOfJunctions
+10 is TotalNumberOfThreeWayJunctions
+1 is TotalNumberOfFourWayJunctions
+6 is TotalNumberOfDeadEnds
+23 is TotalNumberOfHallwayNodes
+
+Analytic Format: 
+100 | 40 | 11 | 10 | 1 | 6 | 23

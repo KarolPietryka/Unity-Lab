@@ -1,0 +1,10 @@
+225 is TotalNumberOfNodes
+94 is TotalNumberOfWalkableNodes
+12 is TotalNumberOfJunctions
+11 is TotalNumberOfThreeWayJunctions
+1 is TotalNumberOfFourWayJunctions
+13 is TotalNumberOfDeadEnds
+69 is TotalNumberOfHallwayNodes
+
+Analytic Format: 
+225 | 94 | 12 | 11 | 1 | 13 | 69

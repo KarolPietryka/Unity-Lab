@@ -1,0 +1,10 @@
+576 is TotalNumberOfNodes
+275 is TotalNumberOfWalkableNodes
+55 is TotalNumberOfJunctions
+50 is TotalNumberOfThreeWayJunctions
+5 is TotalNumberOfFourWayJunctions
+44 is TotalNumberOfDeadEnds
+176 is TotalNumberOfHallwayNodes
+
+Analytic Format: 
+576 | 275 | 55 | 50 | 5 | 44 | 176

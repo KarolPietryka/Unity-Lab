@@ -1,0 +1,10 @@
+529 is TotalNumberOfNodes
+240 is TotalNumberOfWalkableNodes
+37 is TotalNumberOfJunctions
+35 is TotalNumberOfThreeWayJunctions
+2 is TotalNumberOfFourWayJunctions
+37 is TotalNumberOfDeadEnds
+166 is TotalNumberOfHallwayNodes
+
+Analytic Format: 
+529 | 240 | 37 | 35 | 2 | 37 | 166

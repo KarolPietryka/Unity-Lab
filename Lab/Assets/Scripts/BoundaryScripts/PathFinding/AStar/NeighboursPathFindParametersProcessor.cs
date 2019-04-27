@@ -10,15 +10,15 @@ public class NeighboursPathFindParametersProcessor : INeighboursPathFindParamete
 {
     IPlaneBuilder planeBuilder;
     IMazeElement destinationMazeElement;
-    IAStarDistanceHeuristic aStarEuclideanDistanceHeuristic;
+    IAStarDistanceHeuristic aStarDistanceHeuristic;
 
     public NeighboursPathFindParametersProcessor(IPlaneBuilder _planeBuilder, 
         IMazeElement _destinationMazeElement, 
-        IAStarDistanceHeuristic _aStarEuclideanDistanceHeuristic)
+        IAStarDistanceHeuristic _aStarDistanceHeuristic)
     {
         planeBuilder = _planeBuilder;
         destinationMazeElement = _destinationMazeElement;
-        aStarEuclideanDistanceHeuristic = _aStarEuclideanDistanceHeuristic;
+        aStarDistanceHeuristic = _aStarDistanceHeuristic;
 
     }
 
@@ -42,7 +42,7 @@ public class NeighboursPathFindParametersProcessor : INeighboursPathFindParamete
                     //openCloseListController.CloseListContains(neighbourMazeElement) && neighbourMazeElement.PathFindWeight < newNeighbourWeight)
                 {
                     neighbourMazeElement.PathFindWeight = newNeighbourWeight;
-                    neighbourMazeElement.PathFindDistanceHeuristic = aStarEuclideanDistanceHeuristic.GetDistanceBetween(neighbourMazeElement, destinationMazeElement);
+                    neighbourMazeElement.PathFindDistanceHeuristic = aStarDistanceHeuristic.GetDistanceBetween(neighbourMazeElement, destinationMazeElement);
                     neighbourMazeElement.PathFindParent = currentMazeElement;
 
                     if (!openCloseListController.OpenListContains(neighbourMazeElement))

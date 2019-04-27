@@ -1,0 +1,10 @@
+688 is NumberOfVisitedNodes
+149 is NumberOfVisitedJunctions
+140 is NumberOfVisitedThreeWayJunctions
+9 is NumberOfVisitedFourWayJunctions
+71 is NumberOfVisitedDeadEnds
+467 is NumberOfVisitedHallwayNodes
+140 is PathLengthExpressedInNumberOfNodes
+
+Analytic Format: 
+688 | 140 | 149 | 140 | 9 | 71 | 467

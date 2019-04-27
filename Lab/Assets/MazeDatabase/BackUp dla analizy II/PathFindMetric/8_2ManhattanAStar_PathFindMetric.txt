@@ -1,0 +1,10 @@
+564 is NumberOfVisitedNodes
+121 is NumberOfVisitedJunctions
+111 is NumberOfVisitedThreeWayJunctions
+10 is NumberOfVisitedFourWayJunctions
+56 is NumberOfVisitedDeadEnds
+386 is NumberOfVisitedHallwayNodes
+112 is PathLengthExpressedInNumberOfNodes
+
+Analytic Format: 
+564 | 112 | 121 | 111 | 10 | 56 | 386

@@ -1,0 +1,10 @@
+469 is NumberOfVisitedNodes
+70 is NumberOfVisitedJunctions
+65 is NumberOfVisitedThreeWayJunctions
+5 is NumberOfVisitedFourWayJunctions
+52 is NumberOfVisitedDeadEnds
+346 is NumberOfVisitedHallwayNodes
+119 is PathLengthExpressedInNumberOfNodes
+
+Analytic Format: 
+469 | 119 | 70 | 65 | 5 | 52 | 346

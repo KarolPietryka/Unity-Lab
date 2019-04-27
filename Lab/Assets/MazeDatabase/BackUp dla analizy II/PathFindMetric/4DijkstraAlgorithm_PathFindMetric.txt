@@ -1,0 +1,10 @@
+183 is NumberOfVisitedNodes
+33 is NumberOfVisitedJunctions
+32 is NumberOfVisitedThreeWayJunctions
+1 is NumberOfVisitedFourWayJunctions
+8 is NumberOfVisitedDeadEnds
+141 is NumberOfVisitedHallwayNodes
+71 is PathLengthExpressedInNumberOfNodes
+
+Analytic Format: 
+183 | 71 | 33 | 32 | 1 | 8 | 141

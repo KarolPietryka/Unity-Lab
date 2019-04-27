@@ -1,0 +1,10 @@
+280 is NumberOfVisitedNodes
+50 is NumberOfVisitedJunctions
+45 is NumberOfVisitedThreeWayJunctions
+5 is NumberOfVisitedFourWayJunctions
+40 is NumberOfVisitedDeadEnds
+189 is NumberOfVisitedHallwayNodes
+90 is PathLengthExpressedInNumberOfNodes
+
+Analytic Format: 
+280 | 90 | 50 | 45 | 5 | 40 | 189

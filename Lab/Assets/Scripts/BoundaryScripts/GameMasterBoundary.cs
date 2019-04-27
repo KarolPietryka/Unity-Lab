@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+public enum BuildingStatus { Building, Dismantling }
+public enum Direction { Left, Up, Right, Down }
+
 public class GameMasterBoundary : MonoBehaviour, ITimeProvider //TODO to del?
 {
     [SerializeField]
@@ -12,7 +16,6 @@ public class GameMasterBoundary : MonoBehaviour, ITimeProvider //TODO to del?
     public static GameMasterBoundary instance = null;
     private Bounds mazeElementBounds;
     private Bounds gamePlaneBounds;
-    private GameMaster gameMaster = new GameMaster();
     
     public IMouse Mouse { get; set; }
     public IPlaneBuilder PlaneBuilder { get; set; }
@@ -40,28 +43,6 @@ public class GameMasterBoundary : MonoBehaviour, ITimeProvider //TODO to del?
     }
 
 
-    
-    /*#region IMouse
-    public Vector3 GetMousePosition()
-    {
-        return Input.mousePosition;
-    }
-
-    public float GetMouseScrollWheel()
-    {
-        return Input.GetAxis("Mouse ScrollWheel");
-    }
-
-    /*public bool GetMouseButton(int button)
-    {
-        return Input.GetMouseButton(button);
-    }
-
-    public bool GetMouseButtonDown(int button)
-    {
-        return Input.GetMouseButtonDown(button);
-    }
-    #endregion*/
 
     #region ITimeProvider
     public float GetDeltaTime()
@@ -103,13 +84,10 @@ public interface IElementsBounds
 
 public interface IPlaneElementsBounds
 {
-   // Vector3 GamePlaneSpriteLocalScale { get; set; };
     Bounds GamePlaneBounds { get; set; }
     Bounds MazeElementBounds { get; set; }
     float MazeElementGapBetween { get; set; }
     void GamePlaneSizeUpdate(Bounds newBound);
-    /*Vector2 GamePlaneSidesLenght { get; set; }
-    Vector2 MazeElementSidesLenght { get; set; }*/
     Vector2 MazeElementAndGapSumOn { get; set; }
 }
 

@@ -1,0 +1,10 @@
+42 is NumberOfVisitedNodes
+3 is NumberOfVisitedJunctions
+3 is NumberOfVisitedThreeWayJunctions
+0 is NumberOfVisitedFourWayJunctions
+1 is NumberOfVisitedDeadEnds
+37 is NumberOfVisitedHallwayNodes
+41 is PathLengthExpressedInNumberOfNodes
+
+Analytic Format: 
+42 | 41 | 3 | 3 | 0 | 1 | 37

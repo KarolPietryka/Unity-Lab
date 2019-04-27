@@ -1,0 +1,10 @@
+65 is NumberOfVisitedNodes
+19 is NumberOfVisitedJunctions
+17 is NumberOfVisitedThreeWayJunctions
+2 is NumberOfVisitedFourWayJunctions
+5 is NumberOfVisitedDeadEnds
+40 is NumberOfVisitedHallwayNodes
+22 is PathLengthExpressedInNumberOfNodes
+
+Analytic Format: 
+65 | 22 | 19 | 17 | 2 | 5 | 40

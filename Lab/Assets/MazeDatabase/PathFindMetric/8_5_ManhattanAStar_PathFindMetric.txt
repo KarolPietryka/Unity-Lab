@@ -1,0 +1,10 @@
+424 is NumberOfVisitedNodes
+71 is NumberOfVisitedJunctions
+67 is NumberOfVisitedThreeWayJunctions
+4 is NumberOfVisitedFourWayJunctions
+43 is NumberOfVisitedDeadEnds
+309 is NumberOfVisitedHallwayNodes
+123 is PathLengthExpressedInNumberOfNodes
+
+Analytic Format: 
+424 | 123 | 71 | 67 | 4 | 43 | 309

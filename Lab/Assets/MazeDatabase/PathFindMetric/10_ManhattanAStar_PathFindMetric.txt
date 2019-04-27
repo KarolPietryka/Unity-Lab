@@ -1,0 +1,10 @@
+1161 is NumberOfVisitedNodes
+169 is NumberOfVisitedJunctions
+160 is NumberOfVisitedThreeWayJunctions
+9 is NumberOfVisitedFourWayJunctions
+136 is NumberOfVisitedDeadEnds
+855 is NumberOfVisitedHallwayNodes
+401 is PathLengthExpressedInNumberOfNodes
+
+Analytic Format: 
+1161 | 401 | 169 | 160 | 9 | 136 | 855

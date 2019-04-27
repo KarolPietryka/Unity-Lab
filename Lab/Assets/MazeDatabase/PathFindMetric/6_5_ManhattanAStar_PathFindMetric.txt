@@ -1,0 +1,10 @@
+209 is NumberOfVisitedNodes
+32 is NumberOfVisitedJunctions
+30 is NumberOfVisitedThreeWayJunctions
+2 is NumberOfVisitedFourWayJunctions
+29 is NumberOfVisitedDeadEnds
+147 is NumberOfVisitedHallwayNodes
+85 is PathLengthExpressedInNumberOfNodes
+
+Analytic Format: 
+209 | 85 | 32 | 30 | 2 | 29 | 147

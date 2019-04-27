@@ -1,0 +1,10 @@
+397 is NumberOfVisitedNodes
+80 is NumberOfVisitedJunctions
+76 is NumberOfVisitedThreeWayJunctions
+4 is NumberOfVisitedFourWayJunctions
+49 is NumberOfVisitedDeadEnds
+267 is NumberOfVisitedHallwayNodes
+118 is PathLengthExpressedInNumberOfNodes
+
+Analytic Format: 
+397 | 118 | 80 | 76 | 4 | 49 | 267

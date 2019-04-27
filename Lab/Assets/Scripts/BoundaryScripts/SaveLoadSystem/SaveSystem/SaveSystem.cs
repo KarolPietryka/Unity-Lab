@@ -25,7 +25,7 @@ public class SaveSystem : ISaveSystem {
 
     public void Save()
     {
-        pathToSaveFolder.FolderPathValidation();
+        pathToSaveFolder.GetValidatedFolderPath();
         saveText = saveTextCreator.CreateSaveText();
 
         for (int i = 0; i < saveText.Count; i++)
@@ -34,6 +34,4 @@ public class SaveSystem : ISaveSystem {
         }
         writer.Close();
     }
-
-
 }

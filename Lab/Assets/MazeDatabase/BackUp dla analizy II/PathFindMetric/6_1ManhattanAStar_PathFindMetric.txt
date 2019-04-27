@@ -1,0 +1,10 @@
+232 is NumberOfVisitedNodes
+50 is NumberOfVisitedJunctions
+45 is NumberOfVisitedThreeWayJunctions
+5 is NumberOfVisitedFourWayJunctions
+32 is NumberOfVisitedDeadEnds
+149 is NumberOfVisitedHallwayNodes
+50 is PathLengthExpressedInNumberOfNodes
+
+Analytic Format: 
+232 | 50 | 50 | 45 | 5 | 32 | 149

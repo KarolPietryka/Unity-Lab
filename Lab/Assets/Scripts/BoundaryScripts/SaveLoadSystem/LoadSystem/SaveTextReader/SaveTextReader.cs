@@ -15,12 +15,10 @@ public class SaveTextReader : ISaveTextReader {
 
     private ITextFileController textFileController;
     private IVector2FromTextLinesGetter vector2FromTextLinesGetter;
-    //private Vector2 intagerNumberOfMazeElementsOnXAndY;//TODO is this an this beneath is mandatory? why it is instance value and no local?
 
     public SaveTextReader(ITextFileController _textFileController, Vector2 _intagerNumberOfMazeElementsOnXAndY, IVector2FromTextLinesGetter _vector2FromTextLinesGetter)
     {
         textFileController = _textFileController;
-        //intagerNumberOfMazeElementsOnXAndY = _intagerNumberOfMazeElementsOnXAndY;
         vector2FromTextLinesGetter = _vector2FromTextLinesGetter;
     }
 
@@ -57,7 +55,7 @@ public class SaveTextReader : ISaveTextReader {
 
 
 
-    private static int GetLineTextWithGamePlaneBounds(string[] saveTexLines)// Bounds format: "Center: (0,0, 0,0, 0,0), Extents: (5,0, 5,0, 5,0)" TODO is that used anywhere?
+    private static int GetLineTextWithGamePlaneBounds(string[] saveTexLines)// Bounds format: "Center: (0,0, 0,0, 0,0), Extents: (5,0, 5,0, 5,0)"
     {
         int lineWithCenterWord = TextHandler.FindFirstLineWhichContainsString("Center:", saveTexLines);
         int lineWithExtentsWord = TextHandler.FindFirstLineWhichContainsString("Extents:", saveTexLines);
