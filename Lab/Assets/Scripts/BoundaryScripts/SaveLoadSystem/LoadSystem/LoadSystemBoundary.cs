@@ -55,9 +55,8 @@ public class LoadSystemBoundary : MonoBehaviour, ITextFileController, IMazeWalls
     public void LoadMaze()
     {
         currentLoadedMazeNumber += 1;
-        if (currentLoadedMazeNumber + 1 > filesInfo.Length)
+        if (currentLoadedMazeNumber + 1 >= filesInfo.Length)
         {
-            UnityEditor.EditorApplication.isPlaying = false;
             Application.Quit();
         }
         SaveInputField.GetComponent<TextField>().SetText(filesInfo[currentLoadedMazeNumber].FullName);
